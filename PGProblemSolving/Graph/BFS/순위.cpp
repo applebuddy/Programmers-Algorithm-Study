@@ -6,12 +6,66 @@
 //  Copyright © 2019 Min Kyeong Tae. All rights reserved.
 //
 
-/// MARK: - 순위
-/// 순위를 정할 수 있는 선수는 몇명인가??
-/// * Key Point : 선수 간 전전 유무 관계를 그래프로 설정 -> BFS로 상대 전적을 유추할 수 있는 경우를 2차원 c 배열로 정리
-///               -> 상대선수들에 대한 상대전적이 있는 선수만 카운팅 하면 답안 제출 -> The End
+// MARK:  순위
+// - 순위를 정할 수 있는 선수는 몇명인가??
+// * Key Point : 선수 간 전전 유무 관계를 그래프로 설정 -> BFS로 상대 전적을 유추할 수 있는 경우를 2차원 c 배열로 정리
+//               -> 상대선수들에 대한 상대전적이 있는 선수만 카운팅 하면 답안 제출 -> The End
 
-/// MARK: - 순위 통과답안 : 5th Review
+// MRAK: - 순위 6th 복습 답안)
+
+#if 0
+#include <string>
+#include <vector>
+#include <queue>
+
+using namespace std;
+
+vector<vector<int>> C(101, vector<int>(101,0));
+vector<int> G[101];
+
+void BFS(int N) {
+    queue<int> Q;
+    Q.push(N);
+    
+    while(!Q.empty()) {
+        int node = Q.front();
+        Q.pop();
+        for(int i=0; i<G[node].size(); i++) {
+            int nextNode = G[node][i];
+            if(C[N][nextNode]==1) continue;
+            C[N][nextNode]=1;
+            C[nextNode][N]=1;
+            Q.push(nextNode);
+        }
+    }
+}
+
+int solution(int n, vector<vector<int>> results) {
+    int answer = 0;
+    if(n==1) return 1;
+    for(int i=1; i<=n; i++) C[i][i]=1;
+    for(int i=0; i<results.size(); i++) {
+        G[results[i][0]].push_back(results[i][1]);
+    }
+
+    for(int i=1; i<=n; i++) BFS(i);
+    for(int i=1; i<=n; i++) {
+        bool flag = true;
+        for(int j=1; j<=n; j++) {
+            if(C[i][j]==0) {
+                flag = false;
+                break;
+            }
+        }
+        if(flag) answer++;
+    }
+    return answer;
+}
+#endif
+
+
+// MARK: - 순위 통과답안 : 5th Review
+#if 0
 #include <string>
 #include <vector>
 #include <queue>
@@ -56,8 +110,9 @@ int ranking_5(int n, vector<vector<int>> results) {
     }
     return answer;
 }
+#endif
 
-/////// 복습 3) '19. 10. 08.
+// 복습 3) '19. 10. 08.
 //#include <string>
 //#include <queue>
 //#include <vector>

@@ -8,7 +8,7 @@
 
 // MARK: - 최댓값과 최솟값
 // 공백 간격으로 숫자가 있는 문자열을 받아 해당 문자열의 최솟값, 최댓값 출력하기
-
+#if 0
 #include <string>
 #include <vector>
 #include <sstream>
@@ -27,3 +27,4 @@ string getMinMaxNumber(string s) {
     answer += to_string(Ans.back());
     return answer;
 }
+#endif

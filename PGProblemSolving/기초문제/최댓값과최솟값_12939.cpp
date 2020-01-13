@@ -35,10 +35,10 @@ string solution(string s) {
     return answer;
 }
 
-int main(){
-    solution("-2 -10 20 5");
-    return 0;
-}
+//int main(){
+//    solution("-2 -10 20 5");
+//    return 0;
+//}
 //
 //#include <iostream>
 //#include <algorithm>

@@ -27,7 +27,7 @@ func solution(_ priorities: [Int], _ location: Int) -> Int {
                 maxQueue.removeLast()
             }
         } else {
-            var front = pArr.first!
+            let front = pArr.first!
             pArr.removeFirst()
             pArr.append(front)
         }

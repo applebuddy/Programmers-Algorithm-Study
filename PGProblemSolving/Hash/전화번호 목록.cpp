@@ -6,21 +6,20 @@
 //  Copyright © 2019 Min Kyeong Tae. All rights reserved.
 //
 
+// MARK: 전화번호목록 문제풀이
+#if 0
 #include <string>
 #include <vector>
-#include <iostream>
 #include <algorithm>
 
 using namespace std;
 
-bool phoneCallList(vector<string> phone_book) {
-    bool answer = true;
+bool solution(vector<string> phone_book) {
     sort(phone_book.begin(), phone_book.end());
-    for(int i=0; i<phone_book.size()-1; i++){
-        if(phone_book[i]==phone_book[i+1].substr(0,phone_book[i].size())) {
-            answer = false;
-            break;
-        }
+    for(int i=0; i<phone_book.size()-1; i++) {
+        if(phone_book[i] == phone_book[i+1].substr(0,phone_book[i].length())) return false;
     }
-    return answer;
+    
+    return true;
 }
+#endif

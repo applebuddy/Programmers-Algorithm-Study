@@ -6,6 +6,24 @@
 //  Copyright © 2019 Min Kyeong Tae. All rights reserved.
 //
 
+// MARK: 완주하지못한선수 복습 풀이
+#if 0
+#include <string>
+#include <vector>
+#include <map>
+
+using namespace std;
+
+string solution(vector<string> participant, vector<string> completion) {
+    map<string,int> MP;
+    for(auto &v : participant) MP[v]++;
+    for(auto &v : completion) MP[v]--;
+    for(auto &mp : MP) if(mp.second > 0) return mp.first;
+    return "";
+}
+#endif
+
+/*
 #include <string>
 #include <vector>
 #include <map>
@@ -28,6 +46,7 @@ string solution(vector<string> participant, vector<string> completion) {
     }
     return Ans;
 }
+ */
 
 // Sorting을 사용한 문제 풀이
 

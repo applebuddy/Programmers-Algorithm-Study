@@ -6,8 +6,39 @@
 //  Copyright © 2019 Min Kyeong Tae. All rights reserved.
 //
 
-/// MARK: - 기능개발 : Queue / Stack Problem
-/// MARK: 기능개발 : 단순 Queue를 사용한 문제풀이 : PASSED
+/// MARK: 기능개발 : Queue / Stack Problem
+
+// MARK: - 기능개발 복습 풀이답안
+#if 0
+#include <string>
+#include <vector>
+
+using namespace std;
+
+vector<int> solution(vector<int> progresses, vector<int> speeds) {
+    int idx = 0;
+    vector<int> Ans;
+    vector<int> res(progresses.size(),0);
+    for(int i=0; i<progresses.size(); i++) {
+        res[i] = 100 - progresses[i];
+    }
+    
+    while(idx < progresses.size()) {
+        int cnt = 0;
+        int now = (res[idx] - 1) / speeds[idx] + 1;
+        while(res[idx] - speeds[idx] * now <= 0) {
+            cnt++;
+            idx++;
+            if(idx >= progresses.size()) break;
+        }
+        Ans.push_back(cnt);
+    }
+    return Ans;
+}
+#endif
+
+/// MARK: - 기능개발 : 단순 Queue를 사용한 문제풀이 : PASSED
+#if 0
 #include <string>
 #include <vector>
 #include <queue>
@@ -41,7 +72,7 @@ vector<int> functionDevelopment2(vector<int> progresses, vector<int> speeds) {
     
     return answer;
 }
-
+#endif
 
 /// MARK: 기능개발 : queue<pair<int,int>> 를 사용한 풀이 : PASSED
 #if 0

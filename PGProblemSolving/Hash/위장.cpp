@@ -6,28 +6,19 @@
 //  Copyright © 2019 Min Kyeong Tae. All rights reserved.
 //
 
+// MARK: 위장 Lv2 문제풀이
+#if 0
 #include <string>
 #include <vector>
-#include <iostream>
-#include <map>
+#include <unordered_map>
 
 using namespace std;
 
-int hide(vector<vector<string>> clothes) {
-    int answer = 0;
-    map<string,int> m;
-    
-    for(int i=0; i<clothes.size(); i++){
-        m[clothes[i][1]]++;
-    }
-    
-    map<string,int>::iterator iter = m.begin();
-    answer = iter->second;
-    cout << iter->first << " ";
-    for(iter++; iter!=m.end(); iter++){
-        cout << iter->first << " ";
-        answer += answer*(iter->second) + iter->second;
-    }
-    
-    return answer;
+int solution(vector<vector<string>> clothes) {
+    int answer = 1;
+    unordered_map<string,int> MP;
+    for(auto &v : clothes) MP[v[1]]++;
+    for(auto &mp : MP) answer *= (mp.second+1);
+    return answer-1;
 }
+#endif

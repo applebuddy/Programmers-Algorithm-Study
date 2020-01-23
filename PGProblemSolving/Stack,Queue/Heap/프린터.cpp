@@ -6,8 +6,49 @@
 //  Copyright © 2019 Min Kyeong Tae. All rights reserved.
 //
 
-// MARK: - 프린터 : Heap Problem
+// MARK: 프린터 : Heap Problem
 
+// MARK: - 덱 사용 풀이답안
+#if 0
+#include <vector>
+#include <deque>
+#include <algorithm>
+using namespace std;
+
+typedef pair<int,int> Pair;
+
+int solution(vector<int> priorities, int location) {
+    deque<Pair> DQ;
+    int answer = 1;
+    
+    for(int i=0; i<priorities.size(); i++) {
+        DQ.push_back({i, priorities[i]});
+    }
+    
+    sort(priorities.begin(), priorities.end(), less<int>());
+
+    while(1) {
+        if(DQ.front().second == priorities.back()) {
+            if(DQ.front().first == location) {
+                return answer;
+            }
+            else {
+                answer++;
+                priorities.pop_back();
+            }
+        }
+        
+        Pair temp = DQ.front();
+        DQ.pop_front();
+        DQ.push_back(temp);
+    }
+    
+    return answer;
+}
+#endif
+
+// MARK: - 인덱스 사용 풀이답안
+#if 0
 #include <string>
 #include <vector>
 #include <queue>
@@ -38,6 +79,7 @@ int printer(vector<int> priorities, int location) {
     }
     return Ans;
 }
+#endif
 
 /// MARK: pair, queue, priority_queue 사용 답안 (코드가 좀 지저분함) '19. 10. 11.
 //#include <string>

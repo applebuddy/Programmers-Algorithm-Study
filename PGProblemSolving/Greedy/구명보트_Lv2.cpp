@@ -6,6 +6,36 @@
 //  Copyright © 2019 Min Kyeong Tae. All rights reserved.
 //
 
+// MARK: 구명보트 Lv2
+
+// MARK: - 구명보트 while문 풀이답안
+#if 0
+#include <string>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int solution(vector<int> people, int limit) {
+    int answer = 0;
+    sort(people.begin(), people.end());
+    int i=0, j = people.size()-1;
+    while(i<=j) {
+        if(people[i] + people[j] <= limit) {
+            i++;
+            j--;
+            answer++;
+            continue;
+        } else {
+            j--;
+            answer++;
+        }
+    }
+    return answer;
+}
+#endif
+
+#if 0
 #include <string>
 #include <vector>
 #include <iostream>
@@ -27,6 +57,7 @@ int lifeBoat_3(vector<int> people, int limit) {
     }
     return answer;
 }
+#endif
 
 // MARK: - Reviewing Problem '19. 09. 23.
 //int lifeBoat(vector<int> people, int limit) {

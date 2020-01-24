@@ -9,6 +9,9 @@
 // MARK: - 큰 수 만들기 : Greredy Problem, 탐욕법 문제
 // MARK: k개의 수를 제거했을 때 얻을 수 있는 제일 큰 수를 구해라!!
 
+// MARK: - 2중 포문 보다 효율적인 풀이답안
+
+#if 0
 #include <string>
 #include <vector>
 
@@ -27,9 +30,37 @@ string getBiggestNumber(string number, int k) {
             else break;
         }while(1);
     }
-    
     return answer;
 }
+#endif
+
+// MARK: - 2중포문 사용 풀이답안
+
+#if 0
+#include <string>
+#include <vector>
+
+using namespace std;
+
+string solution(string number, int k) {
+    string answer = "";
+    string Number = number;
+    for(int i=number.length()-k; i>0; i--) {
+        char maxNum = Number[0];
+        int maxIdx = 0;
+        for(int j=0; j<=Number.length()-i; j++) {
+            if(maxNum < Number[j]) {
+                maxNum = Number[j];
+                maxIdx = j;
+            }
+        }
+        Number = Number.substr(maxIdx+1);
+        answer += maxNum;
+    }
+    return answer;
+}
+
+#endif
 
 //string solution(string number, int k) {
 //    string answer = "";

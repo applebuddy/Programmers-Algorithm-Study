@@ -6,10 +6,36 @@
 //  Copyright © 2019 Min Kyeong Tae. All rights reserved.
 //
 
-// MARK: - 큰 수 만들기 : Greredy Problem, 탐욕법 문제
+// MARK: 큰 수 만들기 : Greredy Problem, 탐욕법 문제
 // MARK: k개의 수를 제거했을 때 얻을 수 있는 제일 큰 수를 구해라!!
 
-// MARK: - 2중 포문 보다 효율적인 풀이답안
+// MARK: - 수환님 답안 참고 O(N) 풀이답안
+
+#if 0
+#include <string>
+#include <vector>
+
+using namespace std;
+
+string solution(string number, int k) {
+    string answer;
+    int K = k;
+    for(int i=0; i<number.length(); i++) {
+        while(k>0 && answer.length()>0 && answer.back() < number[i]) {
+            k -= 1;
+            answer.pop_back();
+        }
+        
+        if(k==0) {
+            answer += number.substr(i, number.length()-i);
+            break;
+        } else answer.push_back(number[i]);
+    }
+    return answer.substr(0, number.length()-K);
+}
+#endif
+
+// MARK: - 2중 포문 보다 효율적인 풀이답안 (그러나 여전히 비효율적)
 
 #if 0
 #include <string>

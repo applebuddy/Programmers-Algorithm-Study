@@ -6,6 +6,55 @@
 //  Copyright © 2019 Min Kyeong Tae. All rights reserved.
 //
 
+// MARK: 소수찾기 Lv2 
+// MARK: - Map 사용 풀이답안
+#if 0
+#include <string>
+#include <vector>
+#include <unordered_map>
+#include <algorithm>
+#include <cmath>
+
+using namespace std;
+typedef unordered_map<int,int> UMap;
+
+vector<int> Prime(10000000,1);
+
+bool checkPrime(int N, UMap MP) {
+    while(N>0) {
+        int temp = N%10;
+        if(MP[temp]<=0) return false;
+        else MP[temp]--;
+        N/=10;
+    }
+    return true;
+}
+
+int solution(string numbers) {
+    sort(numbers.begin(), numbers.end(), greater<char>());
+    int answer = 0;
+    UMap MP;
+    int MAX = stoi(numbers);
+    
+    for(int i=0; i<numbers.length(); i++) MP[numbers[i]-'0']++;
+    
+    for(int i=2; i<=sqrt(MAX); i++) {
+        if(Prime[i]==1)
+            for(int j=i+i; j<=MAX; j+=i) {
+                Prime[j] = 0;
+            }
+    }
+    
+    for(int i=2; i<=MAX; i++) {
+        if(Prime[i]==1 && checkPrime(i, MP)) answer++;
+    }
+    
+    return answer;
+}
+#endif
+
+// MARK: - Map 미사용 풀이답안
+#if 0
 #include <string>
 #include <vector>
 #include <algorithm>
@@ -56,3 +105,4 @@ int findSpecificPrimeNumber(string numbers) {
     }
     return Ans;
 }
+#endif

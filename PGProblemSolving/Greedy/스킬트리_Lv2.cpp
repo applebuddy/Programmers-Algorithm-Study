@@ -6,9 +6,42 @@
 //  Copyright © 2019 Min Kyeong Tae. All rights reserved.
 //
 
-/// MARK: - 스킬트리
+/// MARK:  스킬트리
 /// MARK: skill_trees의 스킬 조합 들 중, skill을 순서대로 조합하고 있는 경우 갯수를 출력하라!!
 
+// MARK: - 복습 문제풀이
+#if 0
+#include <string>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+bool checkSkill(string &skill, string &skill_tree) {
+    bool prevNo = false;
+    int nowIdx = 0, prevIdx = 0;
+    for(int i=0; i<skill.length(); i++) {
+        auto idx = skill_tree.find(skill[i]);
+        if(idx == string::npos) prevNo = true;
+        else {
+            nowIdx = int(idx);
+            if(prevNo == true || prevIdx > nowIdx) return false;
+            prevIdx = nowIdx;
+        }
+    }
+    return true;
+}
+
+int solution(string skill, vector<string> skill_trees) {
+    int answer = 0;
+    for(int i=0; i<skill_trees.size(); i++) {
+        if(checkSkill(skill, skill_trees[i])) answer++;
+    }
+    return answer;
+}
+#endif
+
+#if 0
 #include <string>
 #include <vector>
 
@@ -42,3 +75,4 @@ int checkSkillTree(string skill, vector<string> skill_trees) {
     }
     return answer;
 }
+#endif

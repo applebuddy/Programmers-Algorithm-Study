@@ -6,8 +6,32 @@
 //  Copyright © 2019 MinKyeongTae. All rights reserved.
 //
 
-// MARK: - 입국심사 43238 Lv3
+// MARK: 입국심사 Lv3 43238 Lv3
 
+// MARK: - 입국심사 복습풀이답안
+/*
+import Foundation
+
+func solution(_ n:Int, _ times:[Int]) -> Int64 {
+    var left = 1, right = times.max()! * n
+    var answer = right
+    while left <= right {
+        let mid = (left + right) / 2
+        var tot = 0
+        for t in times { tot += mid / t }
+        if tot < n {
+            left = mid + 1
+        } else {
+            right = mid - 1
+            answer = answer > mid ? mid : answer
+        }
+    }
+    
+    return Int64(answer)
+}
+*/
+
+/*
 import Foundation
 
 func solution(_ n: Int, _ times: [Int]) -> Int64 {
@@ -25,3 +49,4 @@ func solution(_ n: Int, _ times: [Int]) -> Int64 {
     }
     return Int64(Ans)
 }
+*/

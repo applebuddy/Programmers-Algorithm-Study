@@ -6,7 +6,39 @@
 //  Copyright © 2019 MinKyeongTae. All rights reserved.
 //
 
-/// MARK: - 입국심사_43238_Lv3 : Binary Search Problem
+/// MARK: 입국심사_43238_Lv3 : Binary Search Problem
+
+// MARK: - 입국심사 복습 문제풀이
+#if 0
+#include <string>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+long long solution(int n, vector<int> times) {
+    long long left = 0, max = 0, right = 0;
+    for(auto &v: times) max = max < v ? v : max;
+    right = max * n;
+    
+    long long answer = right;
+    long long mid = 0;
+    while(left <= right) {
+        mid = (left + right) / 2;
+        long long tot = 0;
+        for(auto &v: times) tot += mid/v;
+        if(tot < n) {
+            left = mid + 1;
+        } else {
+            right = mid - 1;
+            answer = answer > mid ? mid : answer;
+        }
+    }
+    
+    return answer;
+}
+#endif
+
 #if 0
 #include <string>
 #include <vector>

@@ -6,7 +6,37 @@
 //  Copyright © 2019 MinKyeongTae. All rights reserved.
 //
 
-/// MARK: - 네트워크_Lv3 : DFS Algorithm Problem
+/// MARK: 네트워크_Lv3 : DFS Algorithm Problem
+
+// MARK: 네트워크 복습 문제풀이
+#if 0
+#include <string>
+#include <vector>
+
+using namespace std;
+
+vector<int> C(201,0);
+
+void DFS(int node, const vector<vector<int>> &computers) {
+    C[node] = 1;
+    for(int i=0; i<computers[node].size(); i++) {
+        if(C[i]==1 || computers[node][i]==0) continue;
+        DFS(i, computers);
+    }
+}
+
+int solution(int n, vector<vector<int>> computers) {
+    int answer = 0;
+    for(int i=0; i<n; i++) {
+        if(C[i]==0) {
+            answer++;
+            DFS(i, computers);
+        }
+    }
+    return answer;
+}
+#endif
+
 #if 0
 #include <string>
 #include <vector>

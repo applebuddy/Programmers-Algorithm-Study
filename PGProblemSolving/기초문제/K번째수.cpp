@@ -6,8 +6,29 @@
 //  Copyright © 2019 Min Kyeong Tae. All rights reserved.
 //
 
-// MARK: - K번째 수
+// MARK: K번째 수
 // MARK: array 특정 구간의(commands[i][0]~commands[i][1]번째 숫자) commands[i][2]번째로 큰 숫자를 구해라!
+
+// MARK: - K번째수 복습 풀이답안
+#if 0
+#include <string>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+vector<int> solution(vector<int> array, vector<vector<int>> commands) {
+    vector<int> Ans;
+    for(auto &V: commands) {
+        vector<int> TV = vector<int>(array.begin()+V[0]-1, array.begin()+V[1]);
+        sort(TV.begin(), TV.end());
+        
+        Ans.push_back(TV[V[2]-1]);
+    }
+    
+    return Ans;
+}
+#endif
 
 //#include <string>
 //#include <vector>

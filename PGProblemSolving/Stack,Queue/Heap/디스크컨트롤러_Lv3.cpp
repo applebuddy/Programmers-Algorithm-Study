@@ -6,10 +6,52 @@
 //  Copyright © 2019 Min Kyeong Tae. All rights reserved.
 //
  
-/// MARK: 디스크 컨트롤러_Lv3 : THE HEAP ALGORITHM PROBLEM
+/// MARK: 디스크 컨트롤러 Lv3; HEAP ALGORITHM PROBLEM
+
+// MARK: - 디스크컨트롤러 복습 문제풀이
+#if 0
+#include <string>
+#include <vector>
+#include <queue>
+#include <algorithm>
+
+using namespace std;
+struct Compare {
+    bool operator () (vector<int> &a, vector<int> &b) {
+    return a[1] > b[1];
+    }
+};
+
+
+int solution(vector<vector<int>> jobs) {
+    int answer = 0;
+    priority_queue<vector<int>, vector<vector<int>>, Compare> PQ;
+    sort(jobs.begin(), jobs.end(), [](vector<int> &a, vector<int> &b) {
+        return a[0] < b[0];
+    });
+    
+    vector<vector<int>>::iterator iter = jobs.begin();
+    int time = (*iter)[0];
+    while(iter != jobs.end() || !PQ.empty()) {
+        while(iter != jobs.end() && (*iter)[0] <= time) {
+            PQ.push(*iter++);
+        }
+        
+        if(!PQ.empty()) {
+            time += PQ.top()[1];
+            answer += time - PQ.top()[0];
+            PQ.pop();
+        } else {
+            time = (*iter)[0];
+        }
+    }
+    
+    return answer / jobs.size();
+}
+#endif
 
 // MARK: - 디스크컨트롤러 힙 사용 복습 답안 '19. 12. 08.
-
+#if 0
 #include <string>
 #include <vector>
 #include <queue>
@@ -50,6 +92,7 @@ int solution(vector<vector<int>> jobs) {
     }
     return answer/jobs.size();
 }
+#endif
     
 #if 0
 #include <string>

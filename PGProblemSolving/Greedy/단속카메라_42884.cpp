@@ -6,7 +6,38 @@
 //  Copyright © 2019 MinKyeongTae. All rights reserved.
 //
 
-/// MARK: - 단속카메라_42884 : Greedy Problem
+/// MARK: 단속카메라 Lv3 42884 : Greedy Problem
+
+// MARK: - 단속카메라 문제풀이
+#if 0
+#include <string>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int solution(vector<vector<int>> routes) {
+    int answer = 0;
+    sort(routes.begin(), routes.end(), [](vector<int> a, vector<int> b) {
+        return a[1] < b[1];
+    });
+    
+    int temp = -30001;
+    for(int i=0; i<routes.size(); i++) {
+        if(routes[i][0] > temp) {
+            temp = routes[i][1];
+            answer++;
+        }
+    }
+    return answer;
+}
+
+// -18 -13
+//   -14 -5
+//     -5 -3
+//       -20 15
+#endif
+
 #if 0
 #include <stdio.h>
 #include <string>

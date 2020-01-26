@@ -6,8 +6,54 @@
 //  Copyright © 2019 MinKyeongTae. All rights reserved.
 //
 
-/// MARK: - 섬연결하기_42861_Lv3
+/// MARK: 섬연결하기_42861_Lv3
 
+// MARK: - 섬연결하기 복습 풀이답안
+#if 0
+#include <string>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int getParent(int node, vector<int> &Parents) {
+    if(Parents[node] == node) return node;
+    else return getParent(Parents[node], Parents);
+}
+
+void mergeParent(int A, int B, vector<int> &Parents) {
+    int nodeA = getParent(A, Parents);
+    int nodeB = getParent(B, Parents);
+    if(nodeA > nodeB) Parents[nodeB] = nodeA;
+    else Parents[nodeA] = nodeB;
+}
+
+int solution(int n, vector<vector<int>> costs) {
+    vector<int> Parents(n+1,0);
+    for(int i=1; i<=n; i++) Parents[i] = i;
+    sort(costs.begin(), costs.end(), [](vector<int> &a, vector<int> &b) {
+        return a[2] < b[2];
+    });
+    
+    int count = 0, idx = 0, answer = 0;
+    while(count <= n-1) {
+        int nodeA = getParent(costs[idx][0], Parents);
+        int nodeB = getParent(costs[idx][1], Parents);
+        if(nodeA != nodeB) {
+            mergeParent(nodeA, nodeB, Parents);
+            answer += costs[idx][2];
+            count++;
+        }
+        idx++;
+        if(idx >= costs.size()) break;
+    }
+
+    return answer;
+}
+#endif
+
+
+// MARK: - 섬연결하기 이전 풀이답안
 #if 0
 #include <string>
 #include <algorithm>

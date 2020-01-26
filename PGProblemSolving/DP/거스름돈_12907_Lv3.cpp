@@ -6,6 +6,27 @@
 //  Copyright © 2019 MinKyeongTae. All rights reserved.
 //
 
+// MARK: 거스름돈 Lv3 12907
+
+// MARK: - 거스름돈 DP 문제풀이
+#if 0
+#include <string>
+#include <vector>
+
+using namespace std;
+
+int solution(int n, vector<int> money) {
+    int answer = 0;
+    vector<int> DP(n+1, 0);
+    for(int i=0; i<=n; i++) DP[i] = i%money[0] == 0 ? 1 : 0;
+    for(int i=1; i<money.size(); i++)
+        for(int j=money[i]; j<=n; j++)
+            DP[j] += DP[j-money[i]] % 1000000007;
+    
+    return DP[n];
+}
+#endif
+
 // MARK: - Only 정확성 통과 답안
 #if 0
 #include <string>

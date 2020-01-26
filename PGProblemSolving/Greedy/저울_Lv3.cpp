@@ -6,8 +6,27 @@
 //  Copyright © 2019 Min Kyeong Tae. All rights reserved.
 //
 
-/// MARK: - 저울
+/// MARK: 저울
 /// MARK: 저울이 있다. 왼쪽에는 특정 물건의 무게를, 좌측에는 추 만을 얹어놓을 수 있다. 해당 추들(무게 배열, weight)로 잴 수 없는 최소의 무게를 구해라!!
+
+// MARK: - 저울 복습 풀이답안
+#if 0
+#include <string>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int solution(vector<int> weight) {
+    sort(weight.begin(), weight.end());
+    int answer = 1;
+    for(int i=0; i<weight.size(); i++) {
+        if(answer+1 >= weight[i]) answer += weight[i];
+        else break;
+    }
+    return answer;
+}
+#endif
 
 // 통과답안, Compact Ver. '19. 10. 12
 #if 0

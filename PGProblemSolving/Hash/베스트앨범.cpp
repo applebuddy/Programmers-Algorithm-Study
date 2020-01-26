@@ -15,7 +15,51 @@
 //    장르 내에서 많이 재생된 노래를 먼저 수록합니다.
 //    장르 내에서 재생 횟수가 같은 노래 중에서는 고유 번호가 낮은 노래를 먼저 수록합니다.
 
+// MARK: - 해시맵, 우선순위큐 활용 복습풀이답안
+#if 0
+#include <string>
+#include <vector>
+#include <queue>
+#include <map>
+
+using namespace std;
+typedef pair<int,int> Pair;
+
+struct Compare {
+    bool operator () (const Pair &a, const Pair &b) {
+        return a.second < b.second || (a.second == b.second && a.first > b.first);
+    }
+};
+
+vector<int> solution(vector<string> genres, vector<int> plays) {
+    vector<int> answer;
+    map<string, priority_queue<Pair, vector<Pair>, Compare>> MP;
+    map<string,int> originMP;
+    map<int,string,greater<int>> totMP;
+    
+    for(int i=0; i<genres.size(); i++) {
+        originMP[genres[i]] += plays[i];
+        MP[genres[i]].push({i, plays[i]});
+    }
+    
+    for(auto &mp: originMP) {
+        totMP[mp.second] = mp.first;
+    }
+    
+    for(auto &mp: totMP) {
+        auto PQ = MP[mp.second];
+        for(int i=0; i<2 && !PQ.empty(); i++) {
+            answer.push_back(PQ.top().first);
+            PQ.pop();
+        }
+    }
+    return answer;
+}
+#endif
+
+
 // MARK: - 멀티맵 활용 풀이답안(해시맵 + 우선순위큐 보다 좀 더 느림)
+
 #if 0
 #include <string>
 #include <vector>
@@ -60,7 +104,7 @@ vector<int> solution(vector<string> genres, vector<int> plays) {
 }
 #endif
 
-// MARK: - 해시맵+우선순위큐 활용 풀이답안(해시맵 + 우선순위큐 보다 좀 더 느림)
+// MARK: - 해시맵+우선순위큐 활용 풀이답안
 #if 0
 #include <string>
 #include <vector>

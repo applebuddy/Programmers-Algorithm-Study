@@ -6,7 +6,62 @@
 //  Copyright © 2019 MinKyeongTae. All rights reserved.
 //
 
-// MARK: N-Queen_12952_Lv3; BackTracking Problem
+// MARK: N-Queen Lv3 12952; BackTracking Problem
+
+// MARK: - N-Queen 복습 문제풀이
+#if 0
+#include <string>
+#include <vector>
+
+using namespace std;
+
+int tx[] = {-1,-1};
+int ty[] = {-1,1};
+int answer = 0;
+
+vector<vector<int>> Board(13,vector<int>(13,0));
+
+bool checkBoard(int x, int y, int n) {
+    
+    for(int i=0; i<n; i++) {
+        if(i!=x && Board[i][y]==1) return false;
+        if(i!=y && Board[x][i]==1) return false;
+    }
+    
+    for(int i=0; i<2; i++) {
+        int nx = x + tx[i];
+        int ny = y + ty[i];
+        while(nx>=0 && ny>=0 && nx<n && ny<n) {
+        if(Board[nx][ny]==1) return false;
+        nx+=tx[i];
+        ny+=ty[i];
+        }
+    }
+    
+    return true;
+}
+
+void DFS(int idx, int n) {
+    if(idx >= n) {
+        answer++;
+        return;
+    }
+    
+    for(int i=0; i<n; i++) {
+        Board[idx][i] = 1;
+        if(checkBoard(idx, i, n)) {
+            DFS(idx+1, n);
+        }
+        Board[idx][i] = 0;
+    }
+    return;
+}
+
+int solution(int n) {
+    DFS(0, n);
+    return answer;
+}
+#endif
 
 #if 0
 #include <string>

@@ -6,9 +6,38 @@
 //  Copyright © 2019 Min Kyeong Tae. All rights reserved.
 //
 
+// MARK: 예산 Lv3
+
+// MARK: - 예산 복습 문제풀이
+#if 0
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int solution(vector<int> budgets, int M) {
+    sort(budgets.begin(), budgets.end());
+    int answer = 0, left = 0, right = budgets.back();
+    while(left <= right) {
+        int mid = (left + right) / 2, tot = 0;
+        for(int i=0; i<budgets.size(); i++) {
+            if(budgets[i]<=mid) tot += budgets[i];
+            else tot += mid;
+        }
+        
+        if(tot <= M) {
+            answer = mid;
+            left = mid + 1;
+        } else right = mid - 1;
+    }
+    return answer;
+}
+#endif
+
+
 /// MARK: - 훨씬 간결한 타 답안 예시)
-#if 1
-/// MARK: 예산문제 복습답안
+#if 0
+/// MARK: - 예산문제 복습답안
 #include <string>
 #include <vector>
 #include <algorithm>

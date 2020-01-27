@@ -6,8 +6,71 @@
 //  Copyright © 2019 Min Kyeong Tae. All rights reserved.
 //
 
-/// MARK: - 올바른 괄호의 갯수 : 카탈린 알고리즘
+/// MARK: 올바른 괄호의 갯수 : 카탈린 알고리즘
 /// '{', '}' 각각 n개를 갖고 있는 올바른 괄호의 갯수 경우의 수를 출력하라!!
+
+// MARK: - 올바른 괄호의 갯수 DFS 문제풀이
+#if 0
+#include <string>
+#include <vector>
+
+using namespace std;
+
+int answer = 0;
+
+void getBrace(int left, int right) {
+    if(left == 0) {
+        answer++;
+        return;
+    }
+    
+    getBrace(left-1, right);
+    if(left < right) getBrace(left, right-1);
+}
+
+int solution(int n) {
+    getBrace(n, n);
+    
+    return answer;
+}
+#endif
+
+// MARK: - 올바른 괄호의 갯수 괄호출력 포함 문제풀이
+#if 0
+#include <string>
+#include <vector>
+
+using namespace std;
+
+int answer = 0;
+
+vector<char> BV(31, ' ');
+void getBrace(int idx, int left, int right) {
+    if(left == 0) {
+        answer++;
+        for(int i=0; i<idx; i++) printf("%c", BV[i]);
+        for(int i=0; i<right; i++) {
+            printf("}");
+            idx++;
+        }
+        puts("");
+        
+        return;
+    }
+    
+    BV[idx] = '{';
+    getBrace(idx+1, left-1, right);
+    if(left < right) {
+        BV[idx] = '}';
+        getBrace(idx+1, left, right-1);
+    }
+}
+
+int solution(int n) {
+    getBrace(0,n,n);
+    return answer;
+}
+#endif
 
 //// * 경우의 수 + 괄호내용 출력 버전)
 //#include <string>

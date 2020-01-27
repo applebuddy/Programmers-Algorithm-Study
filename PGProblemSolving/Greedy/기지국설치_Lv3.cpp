@@ -10,7 +10,31 @@
 ///// MARK: 최소한의 기지국을 설치하라!!!
 ///// * n : 길이, stations : 기 설치 기지국 위치, w : 기지국 좌/우 송신범위
 
-// ✓
+// MARK: - 기지국설치 복습 문제풀이
+#if 0
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int solution(int n, vector<int> stations, int w)
+{
+    int pos = 1, idx = 0, answer = 0;
+    while(pos <= n) {
+        if(idx < stations.size() && stations[idx] - w <= pos) {
+            pos = stations[idx] + w + 1;
+            idx++;
+        } else {
+            pos += w * 2 + 1;
+            answer++;
+        }
+    }
+
+    return answer;
+}
+#endif
+
+// 기지국설치 복습 문제풀이 ✓
+#if 0
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -32,6 +56,7 @@ int findBroadCastCenter(int n, vector<int> stations, int w)
     }
     return Ans;
 }
+#endif
 
 /// 기지국 설치 통과답안, '19. 09. 21.
 //#include <iostream>

@@ -8,6 +8,48 @@
  
 /// MARK: 디스크 컨트롤러 Lv3; HEAP ALGORITHM PROBLEM
 
+// MARK: - 디스크 컨트롤러 재재 복습 문제풀이
+#if 0
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <queue>
+
+using namespace std;
+
+struct Compare {
+    bool operator() (vector<int> &a, vector<int> &b) {
+        return a[1] > b[1];
+    }
+};
+
+int solution(vector<vector<int>> jobs) {
+    
+    priority_queue<vector<int>, vector<vector<int>>, Compare> PQ;
+    sort(jobs.begin(), jobs.end(), [](vector<int> &a, vector<int> &b) {
+        return a[0] < b[0];
+    });
+    
+    vector<vector<int>>::iterator iter = jobs.begin();
+    int time = (*iter)[0], answer = 0;
+    
+    while(!PQ.empty() || iter != jobs.end()) {
+        while(iter != jobs.end() && (*iter)[0] <= time) {
+            PQ.push(*iter++);
+        }
+        
+        if(!PQ.empty()) {
+            time = time + PQ.top()[1];
+            answer += time - PQ.top()[0];
+            PQ.pop();
+        } else {
+            time = (*iter)[0];
+        }
+    }
+    return answer / (int)jobs.size();
+}
+#endif
+
 // MARK: - 디스크컨트롤러 복습 문제풀이
 #if 0
 #include <string>

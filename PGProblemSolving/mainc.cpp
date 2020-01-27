@@ -6,16 +6,6 @@
 //  Copyright © 2019 Min Kyeong Tae. All rights reserved.
 //
 
-#include <vector>
-#include <algorithm>
-using namespace std;
-
-int main() {
-    vector<int> t = {};
-    int max = *max_element(t.begin(), t.end());
-    printf("%d\n",max);
-    return 0;
-}
 //#include <iostream>
 //#include <map>
 //#include <string>

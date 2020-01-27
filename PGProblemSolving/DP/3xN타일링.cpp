@@ -7,6 +7,28 @@
 //
 
 /// MARK: 3xN Tiling Problem : DP
+
+// MARK: - 3xN 타일링 복습 문제풀이
+#if 0
+#include <string>
+#include <vector>
+
+using namespace std;
+
+vector<long long> DP(5001,0);
+int solution(int n) {
+    DP[1] = 1;
+    DP[2] = 3;
+    DP[3] = 1;
+    
+    for(int i=4; i<=n; i++) {
+        if(i%2==0) DP[i] = (DP[i-2] * 3 + DP[i-1] * 2) % 1000000007LL;
+        else DP[i] = (DP[i-2] + DP[i-3]) % 1000000007LL;
+    }
+    return DP[n];
+}
+#endif
+
 #if 0
 #include <string>
 #include <vector>

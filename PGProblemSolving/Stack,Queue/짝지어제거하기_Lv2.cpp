@@ -6,8 +6,31 @@
 //  Copyright © 2019 Min Kyeong Tae. All rights reserved.
 //
 
-/// MARK: - 짝지어 제거하기 : Word Compression
-/// MARK: 연속으로 같은 문자열을 하나씩 제거해서 모두 제거할 수 있는지 여부를 확인해라!!!
+/// MARK: 짝지어 제거하기 : Word Compression
+/// MARK: - 연속으로 같은 문자열을 하나씩 제거해서 모두 제거할 수 있는지 여부를 확인해라!!!
+
+// MARK: - 짝지어 제거하기 복습 문제풀이
+#if 0
+#include <iostream>
+#include <string>
+#include <stack>
+using namespace std;
+
+int solution(string s)
+{
+    stack<char> STK;
+    for(int i=0; i<s.length(); i++) {
+        if(STK.empty()) {
+            STK.push(s[i]);
+        } else {
+            if(STK.top() == s[i]) STK.pop();
+        }
+    }
+    
+    return STK.empty() ? 1 : 0;
+}
+#endif
+
 #if 0
 #include <iostream>
 #include <string>

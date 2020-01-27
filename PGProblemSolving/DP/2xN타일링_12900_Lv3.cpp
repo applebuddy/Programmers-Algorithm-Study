@@ -6,6 +6,25 @@
 //  Copyright © 2019 MinKyeongTae. All rights reserved.
 //
 
+// MARK: 2xN 타일링 Lv3
+
+// MARK: - 2xN 타일링 복습 문제풀이
+#if 0
+#include <string>
+#include <vector>
+
+using namespace std;
+
+int solution(int n) {
+    
+    vector<int> Fib(n+1,0);
+    Fib[1] = 1;
+    Fib[2] = 2;
+    for(int i=3; i<=n; i++) Fib[i] = (Fib[i-1] + Fib[i-2]) % 1000000007;
+    return Fib[n];
+}
+#endif
+
 #if 0
 #include <string>
 #include <vector>

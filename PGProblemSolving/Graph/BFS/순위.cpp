@@ -11,6 +11,53 @@
 // * Key Point : 선수 간 전전 유무 관계를 그래프로 설정 -> BFS로 상대 전적을 유추할 수 있는 경우를 2차원 c 배열로 정리
 //               -> 상대선수들에 대한 상대전적이 있는 선수만 카운팅 하면 답안 제출 -> The End
 
+// MARK: - 순위 7th 복습 문제풀이
+#if 0
+#include <vector>
+#include <queue>
+
+using namespace std;
+
+vector<int> G[101];
+vector<vector<int>> C(101, vector<int>(101,0));
+
+void BFS(int N) {
+    queue<int> Q;
+    Q.push(N);
+    while(!Q.empty()) {
+        int node = Q.front();
+        Q.pop();
+        for(int i=0; i<G[node].size(); i++) {
+            int nextNode = G[node][i];
+            if(C[N][nextNode]==1) continue;
+            C[N][nextNode] = 1;
+            C[nextNode][N] = 1;
+            Q.push(nextNode);
+        }
+    }
+    
+}
+int solution(int n, vector<vector<int>> results) {
+    int answer = 0;
+    for(auto &v: results) G[v[0]].push_back(v[1]);
+    for(int i=1; i<=n; i++) C[i][i] = 1;
+    for(int i=1; i<=n; i++) BFS(i);
+    for(int i=1; i<=n; i++) {
+        bool flag = true;
+        for(int j=1; j<=n; j++) {
+            printf("%d ", C[i][j]);
+            if(C[i][j]==0) {
+                flag = false;
+                break;
+            }
+        }
+        puts("");
+        if(flag) answer++;
+    }
+    return answer;
+}
+#endif
+
 // MRAK: - 순위 6th 복습 답안)
 
 #if 0

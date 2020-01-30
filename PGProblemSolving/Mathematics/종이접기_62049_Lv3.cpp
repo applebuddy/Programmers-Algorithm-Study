@@ -6,7 +6,31 @@
 //  Copyright © 2019 MinKyeongTae. All rights reserved.
 //
 
-/// MARK: - 종기접기 : 데칼코마니 수열 문제
+/// MARK: 종기접기 Lv2 : 데칼코마니 수열 문제
+
+// MARK: - 복습 문제풀이
+#if 0
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+vector<int> solution(int n) {
+    vector<int> answer = {0};
+    n--;
+    while(n--) {
+        vector<int> origin = answer;
+        for(int i=0; i<origin.size(); i++) {
+            origin[i] = origin[i]==0 ? 1 : 0;
+        }
+        reverse(origin.begin(), origin.end());
+        answer.push_back(0);
+        answer.insert(answer.end(), origin.begin(), origin.end());
+    }
+    return answer;
+}
+#endif
+
 #if 0
 #include <string>
 #include <vector>

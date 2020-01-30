@@ -8,6 +8,30 @@
 
 /// MARK: 단속카메라 Lv3 42884 : Greedy Problem
 
+// MARK: - 단속카메라 복습 문제풀이
+#if 0
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int solution(vector<vector<int>> routes) {
+    int answer = 1;
+    sort(routes.begin(), routes.end(), [](vector<int> &a, vector<int> &b) {
+        return a[1] < b[1];
+    });
+    
+    int target = routes[0][1];
+    for(int i=1; i<routes.size(); i++) {
+        if(target < routes[i][0]) {
+            answer++;
+            target = routes[i][1];
+        }
+    }
+    return answer;
+}
+#endif
+
 // MARK: - 단속카메라 문제풀이
 #if 0
 #include <string>

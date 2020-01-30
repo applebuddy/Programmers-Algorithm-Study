@@ -5,57 +5,47 @@
 //  Created by MinKyeongTae on 10/09/2019.
 //  Copyright © 2019 Min Kyeong Tae. All rights reserved.
 //
+
+// MARK: 가장먼노드 Lv3
+
+// MARK: - BFS 문제풀이
 #if 0
-//#include <string>
-//#include <vector>
-//#include <string.h>
-//#include <stdio.h>
-//#include <algorithm>
-//#include <queue>
-//using namespace std;
-//vector<int> g[20001];
-//int c[20001];
-//
-//void BFS(int n){
-//    queue<int> q;
-//    q.push(n);
-//    c[n]=1;
-//    while(!q.empty()){
-//        int node=q.front();
-//        q.pop();
-//        for(int i=0; i<g[node].size(); i++){
-//            int next=g[node][i];
-//            if(c[next]==0){
-//                c[next]=c[node]+1;
-//                q.push(next);
-//            }
-//        }
-//    }
-//}
-//
-//int farthestNode(int n, vector<vector<int>> edge) {
-//    int answer = 1;
-//    memset(c,0,sizeof(c));
-//    
-//    for(int i=0; i<edge.size(); i++){
-//        int a=edge[i][0];
-//        int b=edge[i][1];
-//        g[a].push_back(b);
-//        g[b].push_back(a);
-//    }
-//    
-//    for(int i=1; i<=n; i++){
-//        sort(g[i].begin(),g[i].end());
-//    }
-//    
-//    BFS(1);
-//    sort(c+1, c+n+1, greater<int>());
-//    int max = c[1];
-//    for(int i=2; i<=n; i++){
-//        if(c[i]==max) answer++;
-//        else break;
-//    }
-//    
-//    return answer;
-//}
+#include <string>
+#include <vector>
+#include <queue>
+
+using namespace std;
+
+vector<int> C(20001, 0);
+vector<int> G[20001];
+int Max = 0;
+
+void BFS(int node) {
+    queue<int> Q;
+    Q.push(node);
+    while(!Q.empty()) {
+        int nowNode = Q.front();
+        Q.pop();
+        for(int i=0; i<G[nowNode].size(); i++) {
+            int nextNode = G[nowNode][i];
+            if(C[nextNode]>0) continue;
+            C[nextNode] = C[nowNode] + 1;
+            Max = Max < C[nextNode] ? C[nextNode] : Max;
+            Q.push(nextNode);
+        }
+    }
+}
+
+int solution(int n, vector<vector<int>> edge) {
+    int answer = 0;
+    for(auto &v: edge) {
+        G[v[0]].push_back(v[1]);
+        G[v[1]].push_back(v[0]);
+    }
+    
+    C[1] = 1;
+    BFS(1);
+    for(int i=1; i<=n; i++) if(C[i]==Max) answer++;
+    return answer;
+}
 #endif

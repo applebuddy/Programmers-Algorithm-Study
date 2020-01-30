@@ -6,7 +6,55 @@
 //  Copyright © 2019 MinKyeongTae. All rights reserved.
 //
 
-/// MARK: - 배달 129783 Lv3
+/// MARK: 배달 Lv3 129783
+
+// MARK: - 배달 Dijkstra 복습 문제풀이
+#if 0
+#include <iostream>
+#include <vector>
+#include <queue>
+using namespace std;
+typedef pair<int,int> Pair;
+
+vector<int> C(2001, 2e9);
+vector<Pair> G[51];
+
+struct Compare {
+    bool operator() (const Pair &a, const Pair &b) {
+        return a.second < b.second;
+    }
+};
+
+void dijkstra(int start) {
+    C[1] = 0;
+    priority_queue<Pair, vector<Pair>, Compare> PQ;
+    PQ.push({start, 1});
+    while(!PQ.empty()) {
+        int nowNode = PQ.top().first;
+        PQ.pop();
+        for(int i=0; i<G[nowNode].size(); i++) {
+            int nextNode = G[nowNode][i].first;
+            int nextDistance = C[nowNode] + G[nowNode][i].second;
+            if(C[nextNode] >= nextDistance) {
+                C[nextNode] = nextDistance;
+                PQ.push({nextNode, nextDistance});
+            }
+        }
+    }
+}
+
+int solution(int N, vector<vector<int> > road, int K) {
+    int answer = 0;
+    for(auto &v: road) {
+        G[v[0]].push_back({v[1],v[2]});
+        G[v[1]].push_back({v[0],v[2]});
+    }
+    dijkstra(1);
+    for(int i=1; i<=N; i++) if(C[i]<=K) answer++;
+    return answer;
+}
+#endif
+
 #if 0
 #include <iostream>
 #include <vector>

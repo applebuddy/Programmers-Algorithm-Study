@@ -8,42 +8,35 @@
 
 /// MARK: - N으로 표현_42895
 #if 0
-#include <iostream>
 #include <string>
 #include <vector>
 
 using namespace std;
 
-int Ans = -1;
-void DFS(int N, int G, int CNT, int SUM) {
-    printf("CNT:%d, SUM:%d\n",CNT,SUM);
-    if(CNT>8) return;
-    else if(SUM==G) {
-        if(Ans==-1) Ans = CNT;
-        else if(Ans > CNT) Ans = CNT;
+int answer = -1;
+
+void DFS(int idx, int sum, const int &N, const int &target) {
+    if(idx > 8) return;
+    else if(idx == 8 && sum != target) return;
+    else if(sum == target) {
+        if(answer == -1) answer = idx;
+        else answer = answer > idx ? idx : answer;
         return;
     }
-    
-    int n = 0;
+
+    int newN = 0;
     for(int i=0; i<8; i++) {
-        n = 10*n + N;
-        DFS(N,G,CNT+i+1,SUM+n);
-        DFS(N,G,CNT+i+1,SUM-n);
-        DFS(N,G,CNT+i+1,SUM*n);
-        DFS(N,G,CNT+i+1,SUM/n);
+        newN = newN * 10 + N;
+        DFS(idx+1+i, sum+newN, N, target);
+        DFS(idx+1+i, sum-newN, N, target);
+        DFS(idx+1+i, sum*newN, N, target);
+        DFS(idx+1+i, sum/newN, N, target);
     }
-    return;
 }
 
-int expressionOfN(int N, int number) {
-    DFS(N,number,0,0);
-    printf("%d\n",Ans>8 ? -1 : Ans);
-    return Ans;
-}
-
-int main() {
-    expressionOfN(5,12);
-    return 0;
+int solution(int N, int number) {
+    DFS(0, 0, N, number);
+    return answer;
 }
 #endif
 

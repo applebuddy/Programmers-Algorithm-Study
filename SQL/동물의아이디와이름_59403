@@ -1,0 +1,10 @@
+-- MARK: - 동물의 아이디와 이름 59403
+
+-- 동물의 아이디, 이름을 출력하는 문제입니다.
+-- 1) SELECT로 출력할 열인 ANIMAL_ID, NAME을 선택합니다.
+-- 2) FROM으로 출력할 테이블, ANIMAL_INS를 선택합니다.
+-- 3) ORDER BY ANIMAL_ID ASC 로 ANIMAL_ID 기준 오름차순으로 행을 출력합니다.
+
+-- SQL 코드 ▼
+
+SELECT ANIMAL_ID, NAME FROM ANIMAL_INS ORDER BY ANIMAL_ID ASC

@@ -1,0 +1,10 @@
+-- 여러기준으로 정렬하기 59404
+
+-- 여러가지 기준으로 정렬조건을 준 뒤 출력하는 문제입니다.
+-- 1) SELECT ANIMAL_ID, NAME, DATETIME : ANIMAL_ID, NAME 열을 출력하도록 선택합니다.
+-- 2) FROM ANIMAL_INS : ANIMAL_INS 테이블을 선택합니다.
+-- 3) ORDER BY NAME ASC, DATETIME DESC : NAME기준 오름차순, DATETIME기준 내림차순 정렬한 후 출력합니다.
+
+-- SQL 코드 ▼
+
+SELECT ANIMAL_ID, NAME, DATETIME FROM ANIMAL_INS ORDER BY NAME ASC, DATETIME DESC

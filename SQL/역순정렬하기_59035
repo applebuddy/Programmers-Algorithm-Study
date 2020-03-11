@@ -6,4 +6,5 @@
 -- * 오름차순은 ASC, 그 반대는 DESC로 정렬이 가능합니다.
 
 -- SQL 코드 ▼
+
 SELECT NAME, DATETIME FROM ANIMAL_INS ORDER BY ANIMAL_ID DESC

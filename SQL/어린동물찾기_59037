@@ -1,0 +1,10 @@
+-- MARK: - 어린동물찾기 59037
+
+-- "aged" 상태가 아닌 동물들만 출력하는 문제입니다.
+-- 1) SELECT 를 통해 출력할 열인 ANIMAL_ID, NAME 을 선택합니다.
+-- 2) FROM을 통해 출력할 테이블을 선택합니다.
+-- 3) WHERE을 통해 INTAKE_CONDITION != "Aged"인 행만 필터링하여 출력합니다.
+
+-- SQL 코드 ▼
+
+SELECT ANIMAL_ID, NAME FROM ANIMAL_INS WHERE INTAKE_CONDITION != "Aged"

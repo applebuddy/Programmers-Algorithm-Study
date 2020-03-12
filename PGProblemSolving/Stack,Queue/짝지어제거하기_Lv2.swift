@@ -11,27 +11,29 @@
 // MARK: - 연속으로 같은 문자열을 하나씩 제거해서 모두 제거할 수 있는지 여부를 확인해라!!!
 
 // MARK: - 짝지어 제거하기 복습 문제풀이
-/*
-import Foundation
 
-func solution(_ s:String) -> Int{
-    var STK = [Character]()
-    let arr = Array(s)
-    
-    for i in arr.indices {
-        if STK.isEmpty {
-            STK.append(arr[i])
-        } else {
-            if STK.last! == arr[i] { // 같은게 있을때 제거만 해도 정답처리가 된다.
-                STK.removeLast()
-            }
-        }
-    }
-    return STK.isEmpty ? 1 : 0
-}
-*/
+/*
+ import Foundation
+
+ func solution(_ s:String) -> Int{
+ var STK = [Character]()
+ let arr = Array(s)
+
+ for i in arr.indices {
+     if STK.isEmpty {
+         STK.append(arr[i])
+     } else {
+         if STK.last! == arr[i] { // 같은게 있을때 제거만 해도 정답처리가 된다.
+             STK.removeLast()
+         }
+     }
+ }
+ return STK.isEmpty ? 1 : 0
+ }
+ */
 
 // MARK: - 짝지어 제거하기 이전 문제풀이
+
 /*
  import Foundation
 

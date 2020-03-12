@@ -7,10 +7,10 @@
 //
 
 /*
-import Foundation
+ import Foundation
 
-func getMinMaxNumber(_ s: String) -> String {
-    let Ans = s.components(separatedBy: " ").map { Int($0)! }.sorted()
-    return "\(Ans[0]) \(Ans[Ans.count - 1])"
-}
-*/
+ func getMinMaxNumber(_ s: String) -> String {
+ let Ans = s.components(separatedBy: " ").map { Int($0)! }.sorted()
+ return "\(Ans[0]) \(Ans[Ans.count - 1])"
+ }
+ */

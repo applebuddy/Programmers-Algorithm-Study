@@ -1,6 +1,6 @@
 -- MARK: - 상위 n개 레코드 59405
 
--- DATETIME 순 정렬 후 가장 빠른 1마리 동물 정보만 출력하는 문제입니다.
+-- * DATETIME 순 정렬 후 가장 빠른 1마리 동물 정보만 출력하는 문제입니다.
 -- 1) SELECT NAME : NAME 열만 출력하도록 설정합니다.
 -- 2) FROM ANIMAL_INS : ANIMAL_INS 테이블을 선택합니다.
 -- 3) ORDER BY DATETIME ASC : DATETIME 기준 오름차순 정렬합니다.

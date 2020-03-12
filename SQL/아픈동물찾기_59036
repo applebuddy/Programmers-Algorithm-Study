@@ -1,6 +1,6 @@
 -- MARK: - 아픈동물찾기
 
--- 아픈동물의 ID와 이름만 출력을 해야합니다.
+-- * 아픈동물의 ID와 이름만 출력을 해야합니다.
 -- 1) SELECT를 통해 출력할 열(ANIMAL_ID, NAME)을 선택합니다.
 -- 2) FROM을 통해 ANIMAL_INS 테이블을 선택합니다.
 -- 3) WHERE을 통해 INTAKE_CONDITION이 "Sick"인 경우만 필터링합니다.

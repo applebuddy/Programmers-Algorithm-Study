@@ -1,0 +1,8 @@
+-- MARK: - 동물수구하기 59406
+
+-- ANIMAL_INS 테이블의 전체 동물 수를 카운트해서 출력하는 문제
+-- 1) SELECT COUNT(ANIMAL_ID) AS "count" : ANIMAL_ID 행의 열 갯수를 출력하고, 제목은 count로 지정한다.
+-- 2) FROM ANIMAL_INS : ANIMAL_INS 테이블을 설정합니다.
+
+-- SQL 코드 ▼
+SELECT COUNT(ANIMAL_ID) AS "count" FROM ANIMAL_INS

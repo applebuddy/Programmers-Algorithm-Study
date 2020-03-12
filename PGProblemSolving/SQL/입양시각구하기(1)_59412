@@ -1,0 +1,15 @@
+-- MARK: - 입양시각구하기(1) 59412
+
+-- * 입양시각을 오름차순 9~19시 사이의 횟수를 출력하는 문제
+-- 1) SELECT hour(DATETIME) AS "HOUR", COUNT(DATETIME) AS "COUNT" : 시간, 시간횟수를 표시할 열 선택
+-- 2) FROM ANIMAL_OUTS : ANIMAL_OUTS 테이블 선택
+-- 3) GROUP BY hour : hour 기준으로 그룹화
+-- 4) HAVING hour >= 9 && hour <= 19 : 9~19 범위의 시간대 출력
+-- 5) ORDER BY hour ASC : hour 오름차순 출력
+
+-- SQL 코드 ▼
+
+SELECT HOUR(DATETIME) AS "HOUR", COUNT(DATETIME) AS "COUNT" FROM ANIMAL_OUTS
+GROUP BY HOUR
+HAVING HOUR >= 9 && HOUR <= 19
+ORDER BY HOUR ASC

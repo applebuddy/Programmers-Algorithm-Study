@@ -1,0 +1,8 @@
+-- MARK: - 최댓값구하기 59415
+
+-- 시간 최댓값 한 행을 출력하는 문제
+-- 1) SELECT MAX(DATETIME) AS "시간" : DATETIME열을 선택하는데 제목은 "시간" 으로 최댓값 한 행만 선택합니다.
+-- 2) FROM ANIMAL_INS : ANIMAL_INS 테이블을 선택합니다.
+
+-- SQL 코드 ▼
+SELECT MAX(DATETIME) AS "시간" FROM ANIMAL_INS

@@ -1,8 +1,0 @@
--- MARK: - 중복제거하기 59408
-
--- * 중복되지않고 NULLABLE하지 않은 이름의 동물 수를 출력하는 문제
--- 1) SELECT COUNT(DISTINCT NAME) AS "count" : NAME열의 고유한 이름 갯수를 출력합니다. 이때 열의 제목은 "count"입니다.
--- 2) FROM ANIMAL_INS : ANIMAL_INS 테이블을 설정합니다.
-
--- SQL 코드 ▼
-SELECT COUNT(DISTINCT NAME) AS "count" FROM ANIMAL_INS

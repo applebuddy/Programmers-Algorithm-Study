@@ -1,8 +1,0 @@
--- MARK: - 최솟값구하기 59038
-
--- * 가장 먼저 들어온 동물 한마리의 정보를 출력하는 문제
--- 1) SELECT MIN(DATETIME) AS "시간" : DATETIME 최솟값 한 행을 출력하고, 해당 열 제목을 "시간"으로 설정합니다.
--- 2) FROM ANIMAL_INS : ANIMAL_INS를 테이블로 설정합니다
-
--- SQL 코드 ▼
-SELECT MIN(DATETIME) AS "시간" FROM ANIMAL_INS

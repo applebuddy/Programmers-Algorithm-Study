@@ -1,7 +1,7 @@
 
 // MARK: - 키패드 누르기 67256
 
-// MARK: Implementation swift 문제풀이
+// MARK: Implementation swift 문제풀이 - O(N) timeComplexity
 
 func isLeftPos(_ num: Int) -> Bool {
     return num == 1 || num == 4 || num == 7

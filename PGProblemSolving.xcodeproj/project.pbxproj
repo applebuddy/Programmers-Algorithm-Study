@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		075301E423A7AE390048D633 /* mainc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0753014123A7AE390048D633 /* mainc.cpp */; };
-		076DADAE23B293D700B3FF46 /* mainc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076DADAD23B293D700B3FF46 /* mainc.swift */; };
+		075301E423A7AE390048D633 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0753014123A7AE390048D633 /* main.cpp */; };
+		076DADAE23B293D700B3FF46 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076DADAD23B293D700B3FF46 /* main.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,15 +24,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0753014123A7AE390048D633 /* mainc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mainc.cpp; path = PGProblemSolving/mainc.cpp; sourceTree = "<group>"; };
+		0753014123A7AE390048D633 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = PGProblemSolving/main.cpp; sourceTree = "<group>"; };
 		0753014423A7AE390048D633 /* PGProblemSolving-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "PGProblemSolving-Bridging-Header.h"; path = "PGProblemSolving/PGProblemSolving-Bridging-Header.h"; sourceTree = "<group>"; };
 		075301ED23A7AFE00048D633 /* PGProblemSolving */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = PGProblemSolving; sourceTree = BUILT_PRODUCTS_DIR; };
-		076DADAD23B293D700B3FF46 /* mainc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainc.swift; sourceTree = "<group>"; };
+		076DADAD23B293D700B3FF46 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		0777A89B241A8CDD009FB9AA /* SQL */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SQL; path = PGProblemSolving/SQL; sourceTree = "<group>"; };
 		0777A8AF241BB787009FB9AA /* Graph */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Graph; path = PGProblemSolving/Graph; sourceTree = "<group>"; };
 		0777A8B0241BB787009FB9AA /* Hash */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Hash; path = PGProblemSolving/Hash; sourceTree = "<group>"; };
 		0777A8B1241BB787009FB9AA /* Greedy */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Greedy; path = PGProblemSolving/Greedy; sourceTree = "<group>"; };
-		0777A8B2241BB787009FB9AA /* 기초문제 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "기초문제"; path = "PGProblemSolving/기초문제"; sourceTree = "<group>"; };
 		0777A8B3241BB787009FB9AA /* DP */ = {isa = PBXFileReference; lastKnownFileType = folder; name = DP; path = PGProblemSolving/DP; sourceTree = "<group>"; };
 		0777A8B4241BB787009FB9AA /* String */ = {isa = PBXFileReference; lastKnownFileType = folder; name = String; path = PGProblemSolving/String; sourceTree = "<group>"; };
 		0777A8B5241BB787009FB9AA /* Mathematics */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Mathematics; path = PGProblemSolving/Mathematics; sourceTree = "<group>"; };
@@ -43,6 +42,7 @@
 		0777A8BA241BB787009FB9AA /* Sorting */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Sorting; path = PGProblemSolving/Sorting; sourceTree = "<group>"; };
 		0777A8BB241BB787009FB9AA /* KakaoExam */ = {isa = PBXFileReference; lastKnownFileType = folder; name = KakaoExam; path = PGProblemSolving/KakaoExam; sourceTree = "<group>"; };
 		0777A8BC241BB787009FB9AA /* Heap */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Heap; path = PGProblemSolving/Heap; sourceTree = "<group>"; };
+		0794EBDB25164EDD00EA8B35 /* 기초문제 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "기초문제"; path = "PGProblemSolving/기초문제"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +60,7 @@
 			isa = PBXGroup;
 			children = (
 				0753014423A7AE390048D633 /* PGProblemSolving-Bridging-Header.h */,
-				0777A8B2241BB787009FB9AA /* 기초문제 */,
+				0794EBDB25164EDD00EA8B35 /* 기초문제 */,
 				0777A8B3241BB787009FB9AA /* DP */,
 				0777A8AF241BB787009FB9AA /* Graph */,
 				0777A8B1241BB787009FB9AA /* Greedy */,
@@ -75,8 +75,8 @@
 				0777A8B9241BB787009FB9AA /* Stack,Queue */,
 				0777A8B4241BB787009FB9AA /* String */,
 				0777A89B241A8CDD009FB9AA /* SQL */,
-				0753014123A7AE390048D633 /* mainc.cpp */,
-				076DADAD23B293D700B3FF46 /* mainc.swift */,
+				0753014123A7AE390048D633 /* main.cpp */,
+				076DADAD23B293D700B3FF46 /* main.swift */,
 				075301ED23A7AFE00048D633 /* PGProblemSolving */,
 			);
 			sourceTree = "<group>";
@@ -140,8 +140,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				076DADAE23B293D700B3FF46 /* mainc.swift in Sources */,
-				075301E423A7AE390048D633 /* mainc.cpp in Sources */,
+				076DADAE23B293D700B3FF46 /* main.swift in Sources */,
+				075301E423A7AE390048D633 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

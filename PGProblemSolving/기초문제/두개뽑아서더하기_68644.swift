@@ -5,7 +5,18 @@
 
 import Foundation
 
-func solution(_ numbers: [Int]) -> [Int] {
+func solutionWithSet(_ numbers:[Int]) -> [Int] {
+    var st = Set<Int>()
+    for idx in 0 ..< numbers.count-1 {
+        for jdx in idx+1 ..< numbers.count {
+            st.insert(numbers[idx] + numbers[jdx])
+        }
+    }
+    
+    return st.sorted()
+}
+
+func solutionWithDic(_ numbers: [Int]) -> [Int] {
     var dic = [Int: Bool]()
     for idx in 0 ..< numbers.count - 1 {
         for jdx in idx + 1 ..< numbers.count {
@@ -15,3 +26,4 @@ func solution(_ numbers: [Int]) -> [Int] {
 
     return dic.map { $0.key }.sorted()
 }
+

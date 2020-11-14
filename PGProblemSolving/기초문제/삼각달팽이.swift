@@ -17,6 +17,7 @@ func solution(_ n: Int) -> [Int] {
         G.append([Int](repeating: 0, count: $0))
     }
 
+    // n, n-1, n-2, ... 1 -> 전환점까지의 거리
     (1 ... n).reversed().forEach {
         (0 ..< $0 - 1).forEach { _ in
             G[row][col] = num

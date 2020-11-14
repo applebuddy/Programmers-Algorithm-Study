@@ -24,6 +24,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		072D8DA9255FF51100A04B90 /* 기초문제 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "기초문제"; path = "PGProblemSolving/기초문제"; sourceTree = "<group>"; };
 		0753014123A7AE390048D633 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = PGProblemSolving/main.cpp; sourceTree = "<group>"; };
 		0753014423A7AE390048D633 /* PGProblemSolving-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "PGProblemSolving-Bridging-Header.h"; path = "PGProblemSolving/PGProblemSolving-Bridging-Header.h"; sourceTree = "<group>"; };
 		075301ED23A7AFE00048D633 /* PGProblemSolving */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = PGProblemSolving; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -42,7 +43,6 @@
 		0777A8BA241BB787009FB9AA /* Sorting */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Sorting; path = PGProblemSolving/Sorting; sourceTree = "<group>"; };
 		0777A8BB241BB787009FB9AA /* KakaoExam */ = {isa = PBXFileReference; lastKnownFileType = folder; name = KakaoExam; path = PGProblemSolving/KakaoExam; sourceTree = "<group>"; };
 		0777A8BC241BB787009FB9AA /* Heap */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Heap; path = PGProblemSolving/Heap; sourceTree = "<group>"; };
-		0794EBDB25164EDD00EA8B35 /* 기초문제 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "기초문제"; path = "PGProblemSolving/기초문제"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +60,7 @@
 			isa = PBXGroup;
 			children = (
 				0753014423A7AE390048D633 /* PGProblemSolving-Bridging-Header.h */,
-				0794EBDB25164EDD00EA8B35 /* 기초문제 */,
+				072D8DA9255FF51100A04B90 /* 기초문제 */,
 				0777A8B3241BB787009FB9AA /* DP */,
 				0777A8AF241BB787009FB9AA /* Graph */,
 				0777A8B1241BB787009FB9AA /* Greedy */,

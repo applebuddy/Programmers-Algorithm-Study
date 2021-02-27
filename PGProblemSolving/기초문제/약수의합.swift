@@ -12,6 +12,10 @@
 
 import Foundation
 
+func sumOfTheFactorWithHighOrderFunction(_ n: Int) -> Int {
+    return n == 0 ? 0 : (1...n).map { n % $0 == 0 ? $0 : 0 }.reduce(0, +)
+}
+
 func sumOfTheFactor(_ n: Int) -> Int {
     if n == 0 || n == 1 { return n }
     var Ans = 0

@@ -7,27 +7,26 @@
 //
 
 // MARK: 큰수만들기 Lv2
-
 /*
- import Foundation
-
- func solution(_ number:String, _ k:Int) -> String {
- var arr = Array(number).compactMap { String($0) }
- var K = k
- var Ans = [String]()
- for i in arr.indices {
-     while K > 0 && !Ans.isEmpty && Ans.last! < arr[i] {
-         Ans.removeLast()
-         K -= 1
-     }
-
-     if K <= 0 {
-         Ans.append(contentsOf: arr[i...])
-         break
-     } else {
-         Ans.append(arr[i])
-     }
- }
- return Ans[0..<number.count-k].joined()
- }
- */
+func solution(_ number:String, _ k:Int) -> String {
+    let nCount = number.count
+    let arr = Array(number)
+    var answer: [Character] = []
+    var K = k
+    for index in arr.indices {
+        while K > 0 && !answer.isEmpty && answer.last! < arr[index] {
+            answer.removeLast()
+            K -= 1
+        }
+        
+        if K == 0 {
+            answer.append(contentsOf: Array(arr[index...]))
+            break
+        } else {
+            answer.append(arr[index])
+        }
+    }
+    
+    return String(answer[0..<nCount - k])
+}
+*/

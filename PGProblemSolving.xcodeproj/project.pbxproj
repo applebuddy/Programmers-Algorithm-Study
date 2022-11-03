@@ -27,7 +27,7 @@
 		072D8DA9255FF51100A04B90 /* 기초문제 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "기초문제"; path = "PGProblemSolving/기초문제"; sourceTree = "<group>"; };
 		0753014123A7AE390048D633 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = PGProblemSolving/main.cpp; sourceTree = "<group>"; };
 		0753014423A7AE390048D633 /* PGProblemSolving-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "PGProblemSolving-Bridging-Header.h"; path = "PGProblemSolving/PGProblemSolving-Bridging-Header.h"; sourceTree = "<group>"; };
-		075301ED23A7AFE00048D633 /* PGProblemSolving */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = PGProblemSolving; sourceTree = BUILT_PRODUCTS_DIR; };
+		075301ED23A7AFE00048D633 /* PGProblemSolving */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = PGProblemSolving; path = /Users/applebuddy/Documents/Educations/ProgrammersPS/build/Debug/PGProblemSolving; sourceTree = "<absolute>"; };
 		076DADAD23B293D700B3FF46 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		0777A89B241A8CDD009FB9AA /* SQL */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SQL; path = PGProblemSolving/SQL; sourceTree = "<group>"; };
 		0777A8AF241BB787009FB9AA /* Graph */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Graph; path = PGProblemSolving/Graph; sourceTree = "<group>"; };
@@ -37,7 +37,6 @@
 		0777A8B4241BB787009FB9AA /* String */ = {isa = PBXFileReference; lastKnownFileType = folder; name = String; path = PGProblemSolving/String; sourceTree = "<group>"; };
 		0777A8B5241BB787009FB9AA /* Mathematics */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Mathematics; path = PGProblemSolving/Mathematics; sourceTree = "<group>"; };
 		0777A8B6241BB787009FB9AA /* Set */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Set; path = PGProblemSolving/Set; sourceTree = "<group>"; };
-		0777A8B7241BB787009FB9AA /* Seaching */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Seaching; path = PGProblemSolving/Seaching; sourceTree = "<group>"; };
 		0777A8B8241BB787009FB9AA /* Searching */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Searching; path = PGProblemSolving/Searching; sourceTree = "<group>"; };
 		0777A8B9241BB787009FB9AA /* Stack,Queue */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "Stack,Queue"; path = "PGProblemSolving/Stack,Queue"; sourceTree = "<group>"; };
 		0777A8BA241BB787009FB9AA /* Sorting */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Sorting; path = PGProblemSolving/Sorting; sourceTree = "<group>"; };
@@ -70,7 +69,6 @@
 				0777A8BC241BB787009FB9AA /* Heap */,
 				0777A8BB241BB787009FB9AA /* KakaoExam */,
 				0777A8B5241BB787009FB9AA /* Mathematics */,
-				0777A8B7241BB787009FB9AA /* Seaching */,
 				0777A8B8241BB787009FB9AA /* Searching */,
 				0777A8B6241BB787009FB9AA /* Set */,
 				0777A8BA241BB787009FB9AA /* Sorting */,
@@ -79,7 +77,6 @@
 				0777A89B241A8CDD009FB9AA /* SQL */,
 				0753014123A7AE390048D633 /* main.cpp */,
 				076DADAD23B293D700B3FF46 /* main.swift */,
-				075301ED23A7AFE00048D633 /* PGProblemSolving */,
 			);
 			sourceTree = "<group>";
 		};
@@ -110,7 +107,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1110;
-				LastUpgradeCheck = 1120;
+				LastUpgradeCheck = 1340;
 				ORGANIZATIONNAME = MinKyeongTae;
 				TargetAttributes = {
 					075030A1234DC31B00B42981 = {
@@ -176,6 +173,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -236,6 +234,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;

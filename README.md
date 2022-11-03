@@ -93,7 +93,7 @@ func solution(_ numbers: [Int], _ k:Int) -> Int {
 ~~~swift
 import Foundation
 
-func solution(_ numbers:String) -> Int64 {
+func solution(_ numbers: String) -> Int64 {
     let dic: [String: Int] = [
         "zero": 0, "one": 1, "two": 2, "three": 3, "four": 4, "five": 5,
         "six": 6, "seven": 7, "eight": 8, "nine": 9, "ten": 10
@@ -105,6 +105,34 @@ func solution(_ numbers:String) -> Int64 {
         ans = ans * 10 + Int64(num)
         temp = ""
     }
+}
+~~~
+
+
+
+### 최빈값 구하기
+
+- link : https://school.programmers.co.kr/learn/courses/30/lessons/120812
+
+~~~swift
+import Foundation
+
+func solution(_ array: [Int]) -> Int {
+    let array = array
+        .reduce(into: [Int: Int]()) { dic, elem in
+            dic[elem, default: 0] += 1
+        }
+        .sorted { $0.value > $1.value }
+    
+    if array.count == 1 {
+        return array[0].key
+    }
+    
+    if array[0].value == array[1].value {
+        return -1
+    }
+    
+    return array[0].key
 }
 ~~~
 

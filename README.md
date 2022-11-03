@@ -157,3 +157,21 @@ func solution(_ ingredient: [Int]) -> Int {
 }
 ~~~
 
+
+
+### 연속된 수의 합
+
+- link : https://school.programmers.co.kr/learn/courses/30/lessons/120923
+
+~~~swift
+import Foundation
+
+func solution(_ num: Int, _ total: Int) -> [Int] {
+    let baseSum = (1...num).reduce(0, +)
+    let diff = (total - baseSum) / num
+    let lowerBounds = 1 + diff
+    let upperBounds = 1 + diff + num
+    return Array(lowerBounds ..< upperBounds)
+}
+~~~
+

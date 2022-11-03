@@ -136,3 +136,24 @@ func solution(_ array: [Int]) -> Int {
 }
 ~~~
 
+
+
+### 햄버거 만들기
+
+- https://school.programmers.co.kr/learn/courses/30/lessons/133502
+
+~~~swift
+import Foundation
+
+func solution(_ ingredient: [Int]) -> Int {
+    var stk = [Int]()
+    return ingredient.reduce(into: 0) { ans, elem in
+        stk.append(elem)
+        if stk.count >= 4 && Array(stk[stk.count-4..<stk.count]) == [1, 2, 3, 1] {
+            stk.removeSubrange(stk.count-4..<stk.count)
+            ans += 1
+        }
+    }
+}
+~~~
+

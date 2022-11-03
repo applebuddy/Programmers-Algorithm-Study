@@ -175,3 +175,32 @@ func solution(_ num: Int, _ total: Int) -> [Int] {
 }
 ~~~
 
+
+
+### 등수 매기기
+
+- link : https://school.programmers.co.kr/learn/courses/30/lessons/120882
+
+~~~swift
+import Foundation
+
+func solution(_ score:[[Int]]) -> [Int] {
+    let sortedScores = score.sorted { $0[0] + $0[1] > $1[0] + $1[1] }
+    var dic = [Int: Int]()
+    var (lv, mn) = (0, Int.max)
+    sortedScores.forEach {
+        lv += 1
+        let sum = $0[0] + $0[1]
+        if sum < mn {
+            mn = sum
+            dic[sum] = lv
+        }
+    }
+    
+    return score.reduce(into: [Int]()) { ans, list in
+        let sum = list[0] + list[1]
+        ans.append(dic[sum]!)
+    }
+}
+~~~
+

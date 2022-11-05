@@ -418,3 +418,31 @@ func solution(_ n:Int) -> Int {
 }
 ~~~
 
+
+
+### 컨트롤 제트
+
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/120853#qna
+- Z가 나오면 더한거 빠꾸하고, 숫자 나오면 더하는 문제
+  - 빠꾸할때 사용한 숫자는 버리고 그거보다 이전에 더한거부터 빠꾸를 진행해야함
+
+~~~swift
+import Foundation
+
+func solution(_ s:String) -> Int {
+    var last = 0
+    var numList: [Int] = []
+    return s.split(separator: " ").map(String.init).reduce(into: 0) { ans, query in
+        if query == "Z" { 
+            if numList.isEmpty { return }
+            ans -= numList.last!
+            numList.removeLast()
+            return
+        }
+        let num = Int(query)!
+        ans += num
+        numList.append(num)
+    }
+}
+~~~
+

@@ -234,3 +234,31 @@ func solution(_ quiz:[String]) -> [String] {
 }
 ~~~
 
+
+
+### 문자열 계산하기
+
+- 문자열 파싱 문제
+
+~~~swift
+import Foundation
+
+func solution(_ my_string:String) -> Int {
+    let arr = my_string.split(separator: " ").map(String.init)
+    var (idx, ans) = (1, Int(arr.first!)!)
+    while idx + 1 < arr.count {
+        let com = arr[idx]
+        let next = Int(arr[idx+1])!
+        switch com {
+        case "-":
+            ans -= next
+        case "+":
+            ans += next
+        default: break
+        }
+        idx += 2
+    }
+    return ans
+}
+~~~
+

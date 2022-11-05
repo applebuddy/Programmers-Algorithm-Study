@@ -469,3 +469,26 @@ func solution(_ chicken:Int) -> Int {
 }
 ~~~
 
+
+
+### 분수의 덧셈
+
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/120808
+  - math
+
+~~~swift
+import Foundation
+
+func solution(_ denum1:Int, _ num1:Int, _ denum2:Int, _ num2:Int) -> [Int] {
+    var first: [Int] = [denum1*num2, num1*num2]
+    var second: [Int] = [denum2*num1, num2*num1]
+    var result: [Int] = [first[0]+second[0], first[1]]
+    return (1...min(result[0], result[1])).reduce(into: result) { ans, target in
+        while (target > 1 && ans[0] % target == 0 && ans[1] % target == 0) {
+            ans[0] /= target
+            ans[1] /= target
+        }
+    }
+}
+~~~
+

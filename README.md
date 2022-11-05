@@ -349,3 +349,22 @@ func solution(_ numlist: [Int], _ n: Int) -> [Int] {
 }
 ~~~
 
+
+
+### 로그인 성공?
+
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/120883
+
+~~~swift
+import Foundation
+
+func solution(_ id_pw:[String], _ db:[[String]]) -> String {
+    var isValidID = false
+    for query in db {
+        if id_pw == query { return "login" }
+        if id_pw[0] == query[0] { isValidID = true }
+    }
+    return isValidID ? "wrong pw" : "fail"
+}
+~~~
+

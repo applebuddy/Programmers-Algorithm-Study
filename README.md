@@ -262,3 +262,29 @@ func solution(_ my_string:String) -> Int {
 }
 ~~~
 
+
+
+### 외계어 사전
+
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/120869
+- String, Hash
+
+~~~swift
+import Foundation
+
+func solution(_ spell:[String], _ dic:[String]) -> Int {
+    var spellDic = [Int](repeating: 0, count: 26)
+    spell.forEach {
+        let ascii = Int(Character($0).asciiValue!) - 97
+        spellDic[ascii] += 1
+    }
+    return dic.reduce(into: 0) { count, str in
+        var tempDic = [Int](repeating: 0, count: 26)
+        str.forEach { char in
+            let ascii = Int(char.asciiValue!) - 97
+            tempDic[ascii] += 1
+        }
+        count += spellDic == tempDic ? 1 : 0
+    } > 0 ? 1 : 2
+}
+~~~

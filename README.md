@@ -204,3 +204,33 @@ func solution(_ score:[[Int]]) -> [Int] {
 }
 ~~~
 
+
+
+### OX퀴즈
+
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/120907?language=swift
+
+- 문자열 파싱 문제
+
+~~~swift
+import Foundation
+
+func solution(_ quiz:[String]) -> [String] {
+    return quiz.reduce(into: [String]()) { ans, query in
+        let splited = query.split(separator: " ").map(String.init)
+        let firstNumber = Int(splited[0])!
+        let com = splited[1]
+        let secondNumber = Int(splited[2])!
+        let thirdNumber = Int(splited[4])!
+        switch com {
+        case "-":
+            ans.append(firstNumber - secondNumber == thirdNumber ? "O" : "X")
+        case "+":
+            ans.append(firstNumber + secondNumber == thirdNumber ? "O" : "X")
+        default:
+            break
+        }
+    }
+}
+~~~
+

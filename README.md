@@ -288,3 +288,44 @@ func solution(_ spell:[String], _ dic:[String]) -> Int {
     } > 0 ? 1 : 2
 }
 ~~~
+
+
+
+### 안전지대
+
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/120866
+- array, implementation
+
+~~~swift
+import Foundation
+
+let dx = [-1, -1, -1, 0, 0, 0, 1, 1, 1]
+let dy = [-1, 0, 1, -1, 0, 1, -1, 0, 1]
+func solution(_ board: [[Int]]) -> Int {
+    var board = board
+    var ans = 0
+    for i in board.indices {
+        for j in board[i].indices {
+            let num = board[i][j]
+            if num == 0 {
+                ans += 1
+            } else if num == 1 {
+                for k in dx.indices {
+                    let nx = i + dx[k]
+                    let ny = j + dy[k]
+                    if nx < 0 || ny < 0 || nx >= board.count || ny >= board[0].count {
+                        continue
+                    }
+                    if board[nx][ny] != 0 { continue }
+                    board[nx][ny] = 2
+                    if (0...3) ~= k { ans -= 1 }
+                }
+            } else if num == 2 {
+                continue
+            }
+        }
+    }
+    return ans
+}
+~~~
+

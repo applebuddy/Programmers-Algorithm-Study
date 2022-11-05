@@ -392,3 +392,29 @@ func solution(_ keyInput: [String], _ board: [Int]) -> [Int] {
 }
 ~~~
 
+
+
+### 저주의 숫자 3
+
+- https://school.programmers.co.kr/learn/courses/30/lessons/120871
+  - Implementation
+
+~~~swift
+import Foundation
+
+func solution(_ n:Int) -> Int {
+    return (1...n).reduce(into: 0) { ans, _ in
+        func isThreeDigit(_ num: Int) -> Bool {
+            var (temp, isThree) = (ans, false)
+            while temp > 0 {
+                if temp % 10 == 3 { return true }
+                temp /= 10
+            }
+            return false
+        }
+        ans += 1
+        while ans % 3 == 0 || isThreeDigit(ans) { ans += 1 }                                 
+    }
+}
+~~~
+

@@ -446,3 +446,26 @@ func solution(_ s:String) -> Int {
 }
 ~~~
 
+
+
+### 치킨 쿠폰
+
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/120884
+  - simulation
+
+~~~swift
+import Foundation
+
+func solution(_ chicken:Int) -> Int {
+    var ans = 0
+    var chi = chicken
+    while chi >= 10 {
+        let bonus = chi / 10
+        chi %= 10
+        chi += bonus
+        ans += bonus
+    }
+    return ans
+}
+~~~
+

@@ -209,8 +209,8 @@ func solution(_ score:[[Int]]) -> [Int] {
 ### OX퀴즈
 
 - problem link : https://school.programmers.co.kr/learn/courses/30/lessons/120907?language=swift
+  - 문자열 파싱 문제
 
-- 문자열 파싱 문제
 
 ~~~swift
 import Foundation
@@ -267,7 +267,8 @@ func solution(_ my_string:String) -> Int {
 ### 외계어 사전
 
 - problem link : https://school.programmers.co.kr/learn/courses/30/lessons/120869
-- String, Hash
+  - String, Hash
+
 
 ~~~swift
 import Foundation
@@ -294,7 +295,7 @@ func solution(_ spell:[String], _ dic:[String]) -> Int {
 ### 안전지대
 
 - problem link : https://school.programmers.co.kr/learn/courses/30/lessons/120866
-- array, implementation
+  - array, implementation
 
 ~~~swift
 import Foundation
@@ -334,7 +335,7 @@ func solution(_ board: [[Int]]) -> Int {
 ### 특이한 정렬
 
 - problem link : https://school.programmers.co.kr/learn/courses/30/lessons/120880
-- sorting with multiple conditions
+  - sorting with multiple conditions
 
 ~~~swift
 import Foundation
@@ -365,6 +366,29 @@ func solution(_ id_pw:[String], _ db:[[String]]) -> String {
         if id_pw[0] == query[0] { isValidID = true }
     }
     return isValidID ? "wrong pw" : "fail"
+}
+~~~
+
+
+
+### 캐릭터의 좌표
+
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/120861
+  - implementation
+
+~~~swift
+import Foundation
+
+func solution(_ keyInput: [String], _ board: [Int]) -> [Int] {
+    let comDic: [String: (Int, Int)] = ["left": (-1, 0), "right": (1, 0), "up": (0, 1), "down": (0, -1)]
+    let (mnX, mxX) = (-(board[0] / 2), board[0] / 2)
+    let (mnY, mxY) = (-(board[1] / 2), board[1] / 2)
+    return keyInput.reduce(into: [0, 0]) { ans, com in
+        let nx = ans[0] + comDic[com]!.0
+        let ny = ans[1] + comDic[com]!.1
+        if nx < mnX || ny < mnY || nx > mxX || ny > mxY { return }
+        ans = [nx, ny]
+    }
 }
 ~~~
 

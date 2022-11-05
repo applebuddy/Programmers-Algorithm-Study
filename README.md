@@ -329,3 +329,23 @@ func solution(_ board: [[Int]]) -> Int {
 }
 ~~~
 
+
+
+### 특이한 정렬
+
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/120880
+- sorting with multiple conditions
+
+~~~swift
+import Foundation
+
+func solution(_ numlist: [Int], _ n: Int) -> [Int] {
+    return numlist.sorted {
+        let firstAbs = abs(Double($0-n))
+        let secondAbs = abs(Double($1-n))
+        if firstAbs != secondAbs { return firstAbs < secondAbs } 
+        else { return $0 > $1 }
+    }
+}
+~~~
+

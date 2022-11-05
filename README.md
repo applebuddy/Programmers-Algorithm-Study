@@ -492,3 +492,35 @@ func solution(_ denum1:Int, _ num1:Int, _ denum2:Int, _ num2:Int) -> [Int] {
 }
 ~~~
 
+
+
+### 평행
+
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/120875#qna
+  - math
+
+~~~swift
+import Foundation
+
+func solution(_ dots:[[Int]]) -> Int {
+    var dic: [Float: Bool] = [:]
+
+    func isParallel(_ first: [Int], _ second: [Int]) -> Bool {
+        var diff = Float(second[0] - first[0]) / Float(second[1] - first[1])
+        if dic[diff] != nil {
+            return true
+        }
+        dic[diff] = true
+        return false
+    }
+    
+    for i in 0 ..< dots.count - 1 {
+        for j in i+1 ..< dots.count {
+            if isParallel(dots[i], dots[j]) { return 1 }
+        }
+    }
+
+    return 0
+}
+~~~
+

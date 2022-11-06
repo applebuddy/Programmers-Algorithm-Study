@@ -524,3 +524,35 @@ func solution(_ dots:[[Int]]) -> Int {
 }
 ~~~
 
+
+
+### 옹알이 (2)
+
+- problem link :  https://school.programmers.co.kr/learn/courses/30/lessons/133499?language=swift
+  - hash, string
+
+~~~swift
+import Foundation
+
+func solution(_ babbling: [String]) -> Int {
+    let st = Set<String>(["aya", "ye", "woo", "ma"])
+    var last = ""
+    var temp  = ""
+    return babbling.reduce(into: 0) { ans, query in
+        temp = ""
+        last = ""
+        for char in query {
+            temp += "\(char)"
+            if st.contains(temp) {
+                if temp == last { return }
+                last = temp
+                temp = ""
+            }
+        }
+        if temp.isEmpty {
+            ans += 1
+        }
+    }
+}
+~~~
+

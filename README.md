@@ -670,3 +670,28 @@ func solution(_ n:Int) -> [Int] {
 }
 ~~~
 
+
+
+### 숨어있는 숫자의 덧셈 (2)
+
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/120864#
+
+~~~swift
+import Foundation
+
+func solution(_ my_string: String) -> Int {
+    var temp = 0
+    return my_string.reduce(into: 0) { ans, char in
+        let ascii = Int(char.asciiValue!) - 48
+        guard (0...9) ~= ascii else { 
+            ans += temp
+            temp = 0
+            return 
+        }
+        temp = temp * 10 + ascii
+    } + temp
+}
+~~~
+
+
+

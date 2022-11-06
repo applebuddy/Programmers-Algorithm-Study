@@ -602,3 +602,32 @@ func solution(_ dots: [[Int]]) -> Int {
 }
 ~~~
 
+
+
+### 다항식 더하기
+
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/120863#qna
+  - string
+
+~~~swift
+import Foundation
+
+func solution(_ polynomial:String) -> String {
+    let arr = polynomial.split(separator: " ").map(String.init)
+    let nums = arr.filter { $0.last! != "x" && $0.last! != "+" }.compactMap(Int.init).reduce(0, +)
+    
+    let xNums = arr.filter { $0.last! == "x" }.reduce(into: 0) { nums, xn in
+        if xn == "x" { nums += 1 }
+        else {
+            var txn = xn.dropLast()
+            nums += Int(txn)!
+        }
+    }
+
+    var ans = ""
+    if xNums > 0 { ans += xNums == 1 ? "x" : "\(xNums)x" }
+    if nums > 0 { ans += (!ans.isEmpty ? " + " : "") + "\(nums)" }
+    return ans
+}
+~~~
+

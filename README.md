@@ -769,3 +769,64 @@ func solution(_ a:Int, _ b:Int) -> Int {
 ~~~
 
 
+
+### 구슬을 나누는 경우의 수
+
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/120840
+  - math, combination
+
+~~~swift
+import Foundation
+
+func solution(_ balls: Int, _ share: Int) -> Int {
+    var dic = ((balls - share + 1) ... balls).reduce(into: [Int: Bool]()) { dic, num in
+        dic[num] = true
+    }
+    
+    var additionalNumberList = [Int]()
+    (1...share).forEach {
+        if dic[$0] != nil {
+            dic[$0] = nil   
+        } else {
+            additionalNumberList.append($0)
+        }
+    }
+    
+    var idx = 0
+    return dic.reduce(into: 1) { 
+        $0 *= $1.key 
+        while idx < additionalNumberList.count && $0 % additionalNumberList[idx] == 0 {
+            $0 /= additionalNumberList[idx]
+            idx += 1
+        } 
+    }
+}
+~~~
+
+
+
+~~~swift
+import Foundation
+
+func solution(_ lines: [[Int]]) -> Int {
+    var dic = [Int: Int]()
+    var (mn, mx) = (Int.max, Int.min)
+    (0...2).forEach {
+        mn = lines[$0][0] < mn ? lines[$0][0] : mn
+        mx = lines[$0][1] > mx ? lines[$0][1] : mx
+        (lines[$0][0]...lines[$0][1]).forEach { value in
+            dic[value, default: 0] += 1 
+        }
+    }
+    var sec = 0
+    return (mn...mx).reduce(into: 0) { ans, num in
+        if dic[num, default: 0] > 1 {
+            sec += 1
+            if sec > 1 { ans += 1 }
+        } else {
+            sec = 0
+        }
+    }
+}
+~~~
+

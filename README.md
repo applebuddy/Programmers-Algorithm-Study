@@ -695,3 +695,29 @@ func solution(_ my_string: String) -> Int {
 
 
 
+### 모스부호 (1)
+
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/120838
+  - hash, string
+
+~~~swift
+import Foundation
+
+func solution(_ letter:String) -> String {
+    let dic = [
+      ".-":"a","-...":"b","-.-.":"c","-..":"d",".":"e","..-.":"f", "--.":"g",
+      "....":"h","..":"i",".---":"j","-.-":"k",".-..":"l", "--":"m","-.":"n",
+      "---":"o",".--.":"p","--.-":"q",".-.":"r", "...":"s","-":"t","..-":"u",
+      "...-":"v",".--":"w","-..-":"x", "-.--":"y","--..":"z"
+    ]
+    var temp = ""    
+    return letter.split(separator: " ").reduce(into: "") { ans, char in
+        temp += "\(char)"
+        if let value = dic[temp] {
+            ans += value
+            temp = ""
+        }
+    }
+}
+~~~
+

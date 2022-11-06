@@ -583,3 +583,22 @@ func solution(_ sides: [Int]) -> Int {
 }
 ~~~
 
+
+
+### 직사각형 넓이 구하기
+
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/120860
+  - math
+
+~~~swift
+import Foundation
+
+func solution(_ dots: [[Int]]) -> Int {
+    let mn = dots.min { $0[0] < $1[0] }![0]
+    let mx = dots.max { $0[0] < $1[0] }![0]
+    let mn2 = dots.min { $0[1] < $1[1] }![1]
+    let mx2 = dots.max { $0[1] < $1[1] }![1]
+    return (mx - mn) * (mx2 - mn2)
+}
+~~~
+

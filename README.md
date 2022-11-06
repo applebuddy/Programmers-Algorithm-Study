@@ -631,3 +631,42 @@ func solution(_ polynomial:String) -> String {
 }
 ~~~
 
+
+
+### 소인수분해
+
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/120852
+  - math, 에라토스테네스의 체
+
+~~~swift
+import Foundation
+
+func solution(_ n:Int) -> [Int] {
+    var prime = [Bool](repeating: true, count: n+1)
+    prime[0...1] = [false, false]
+    var i = 2, j = i + i
+    if n == 2 { return [2] }
+    while i * i <= n {
+        j = i + i
+        while j <= n {
+            prime[j] = false
+            j += i
+        }
+        i += 1
+    }
+    var num = n
+    return prime
+        .enumerated()
+        .filter { $0.1 }
+        .map { $0.0 }
+        .reduce(into: [Int]()) { ans, prime in
+            var valid = false
+            while num % prime == 0 {
+                num /= prime
+                valid = true
+            }        
+            if valid { ans.append(prime) }
+        }
+}
+~~~
+

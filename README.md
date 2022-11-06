@@ -735,3 +735,37 @@ func solution(_ M:Int, _ N:Int) -> Int {
 }
 ~~~
 
+
+
+### 유한소수 판별하기
+
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/120878
+  - math
+
+~~~swift
+import Foundation
+
+func solution(_ a:Int, _ b:Int) -> Int {
+    var first = a, second = b
+    let mx = max(a, b)
+    let mn = min(a, b)
+    (1...mn).forEach {
+        while $0 > 1 && first % $0 == 0 && second % $0 == 0 {
+            first /= $0
+            second /= $0
+        }
+    }
+    
+    for num in (1...second) {
+        while num > 1 && second % num == 0 {
+            if !(num == 2 || num == 5) {
+                return 2
+            }
+            second /= num
+        }
+    }
+    return 1
+}
+~~~
+
+

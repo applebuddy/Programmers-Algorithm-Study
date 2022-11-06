@@ -556,3 +556,30 @@ func solution(_ babbling: [String]) -> Int {
 }
 ~~~
 
+
+
+### 삼각형의 완성조건 (2)
+
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/120868
+
+~~~swift
+import Foundation
+
+func solution(_ sides: [Int]) -> Int {
+    var ans = 0
+    let sum = sides[0] + sides[1]
+    let mx = max(sides[0], sides[1])
+    let mn = min(sides[0], sides[1])
+    if mx < sum - 1 {
+        ans += sum - mx - 1
+    }
+
+    if 0 < sum - mx {
+        print(sum - mx)
+        ans += sum - mx
+    }
+
+    return ans
+}
+~~~
+

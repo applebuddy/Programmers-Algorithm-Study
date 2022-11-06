@@ -721,3 +721,17 @@ func solution(_ letter:String) -> String {
 }
 ~~~
 
+
+
+### 종이 자르기
+
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/120922
+
+~~~swift
+import Foundation
+
+func solution(_ M:Int, _ N:Int) -> Int {
+    return N * M - 1 // 1x1 단위로 잘개 자르기 위해 필요한 가위질 횟수 공식.
+}
+~~~
+

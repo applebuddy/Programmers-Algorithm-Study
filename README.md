@@ -855,3 +855,34 @@ func solution(_ n:Int) -> Int {
 }
 ~~~
 
+
+
+### 2개 이하로 다른 비트
+
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/77885
+- bit calculation
+
+~~~swift
+import Foundation
+
+func solution(_ numbers: [Int64]) -> [Int64] {
+    return numbers.reduce(into: [Int64]()) { ans, num in
+        if num % 2 == 0 {
+            ans.append(num + 1)
+            return
+        }
+                                      
+        var bitArray = ["0"] + Array(String(num, radix: 2)).map(String.init)
+        var idx = bitArray.count - 1
+        var val = 1
+        while idx >= 0 {
+            if bitArray[idx] == "0" { bitArray[idx] = "1"; break }
+            idx -= 1
+            val *= 2
+        }
+        ans.append(Int64(Int(bitArray.joined(), radix: 2)!) - Int64(val / 2))
+    }
+}
+~~~
+
+

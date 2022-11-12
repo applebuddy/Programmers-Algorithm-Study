@@ -868,3 +868,17 @@ func solution(_ X:String, _ Y:String) -> String {
 }
 ~~~
 
+
+
+### 나머지가 1이 되는 수 찾기
+
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/87389
+
+~~~swift
+import Foundation
+
+func solution(_ n:Int) -> Int {
+    return (2...n-1).first { n % $0 == 1 }!
+}
+~~~
+

@@ -830,3 +830,41 @@ func solution(_ lines: [[Int]]) -> Int {
 }
 ~~~
 
+
+
+# Level 1
+
+### 숫자 짝꿍
+
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/131128
+  - hash
+
+~~~swift
+import Foundation
+
+func solution(_ X:String, _ Y:String) -> String {
+    var xDic = [Int: Int]()
+    var yDic = [Int: Int]()
+    X.forEach { char in 
+        let x = Int(char.asciiValue!) - 48
+        xDic[x % 10, default: 0] += 1  
+    }
+    Y.forEach { char in 
+        let y = Int(char.asciiValue!) - 48
+        yDic[y % 10, default: 0] += 1
+    }
+
+    var ans = ""
+    var isDup = false
+    for num in stride(from: 9, through: 0, by: -1) {
+        let count = min(xDic[num, default: 0], yDic[num, default: 0])
+        if num != 0 || (num == 0 && (!ans.isEmpty && ans.first! != "0")) {
+            ans += String(repeating: "\(num)", count: count)     
+        } 
+        if count >= 1 { isDup = true }
+    }
+
+    return isDup ? (ans.isEmpty ? "0" : ans) : "-1"
+}
+~~~
+

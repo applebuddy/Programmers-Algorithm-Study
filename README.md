@@ -805,33 +805,6 @@ func solution(_ balls: Int, _ share: Int) -> Int {
 
 
 
-~~~swift
-import Foundation
-
-func solution(_ lines: [[Int]]) -> Int {
-    var dic = [Int: Int]()
-    var (mn, mx) = (Int.max, Int.min)
-    (0...2).forEach {
-        mn = lines[$0][0] < mn ? lines[$0][0] : mn
-        mx = lines[$0][1] > mx ? lines[$0][1] : mx
-        (lines[$0][0]...lines[$0][1]).forEach { value in
-            dic[value, default: 0] += 1 
-        }
-    }
-    var sec = 0
-    return (mn...mx).reduce(into: 0) { ans, num in
-        if dic[num, default: 0] > 1 {
-            sec += 1
-            if sec > 1 { ans += 1 }
-        } else {
-            sec = 0
-        }
-    }
-}
-~~~
-
-
-
 # Level 1
 
 ### 숫자 짝꿍
@@ -882,39 +855,3 @@ func solution(_ n:Int) -> Int {
 }
 ~~~
 
-
-
-### 신고 결과 받기
-
-- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/92334
-  - hash
-- report를 Set으로 만들어서 중복을 제거하고 시작할 수가 있었는데 생각 못했다.
-
-~~~swift
-import Foundation
-
-func solution(_ id_list: [String], _ report: [String], _ k: Int) -> [Int] {
-    var dic = [String: Set<String>]()
-    var dic2 = [String: Int]()
-    report.forEach { query in
-        let array = query.split(separator: " ").map(String.init)
-        let (from, to) = (array[0], array[1])
-        let st = dic[from, default: []]
-        if !st.contains(to) {
-            dic[from, default: []].insert(to)
-            dic2[to, default: 0] += 1
-        }
-    }
-    
-    let banSet = dic2.reduce(into: Set<String>()) { st, tuple in 
-        if tuple.value >= k {
-            st.insert(tuple.key)
-        }
-    }
-
-    return id_list.reduce(into: [Int]()) { ans, name in
-        let st = dic[name, default: []]
-        ans.append(st.intersection(banSet).count)
-    }
-}
-~~~

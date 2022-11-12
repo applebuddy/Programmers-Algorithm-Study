@@ -886,3 +886,46 @@ func solution(_ numbers: [Int64]) -> [Int64] {
 ~~~
 
 
+
+### 숫자 카드 나누기
+
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/135807
+  - math(gcd)
+
+~~~swift
+import Foundation
+
+func gcd(_ a: Int, _ b: Int) -> Int {
+    if b == 0 { return a }
+    return gcd(b, a % b)
+}
+
+func solution(_ arrayA:[Int], _ arrayB:[Int]) -> Int {
+    var ans = 0
+    var gcdA = arrayA.first!
+    if arrayA.count > 1 {
+        arrayA[1...].forEach {
+            gcdA = gcd(gcdA, $0)
+        }
+    }
+    
+    if gcdA > 1 && arrayB.filter({ $0 % gcdA == 0 }).isEmpty {
+        ans = gcdA
+    }
+
+    var gcdB = arrayB.first!
+    if arrayB.count > 1 {
+        arrayB[1...].forEach {
+            gcdB = gcd(gcdB, $0)
+        }
+    }
+    
+    if gcdB > 1 && arrayA.filter({ $0 % gcdB == 0 }).isEmpty {
+        ans = ans < gcdB ? gcdB : ans
+    }
+    
+    return ans
+}
+~~~
+
+

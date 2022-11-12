@@ -929,3 +929,25 @@ func solution(_ arrayA:[Int], _ arrayB:[Int]) -> Int {
 ~~~
 
 
+
+### 연속 부분 수열 합의 개수
+
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/131701
+  - brute-force, hash
+
+~~~swift
+import Foundation
+
+func solution(_ elements: [Int]) -> Int {
+    var array = elements + elements
+    array.removeLast()
+    return (elements.indices).reduce(into: Set<Int>()) { ans, idx in
+        var sum = 0
+        for jdx in (idx..<idx+elements.count) {
+            sum += array[jdx]
+            ans.insert(sum)
+        }
+    }.count
+}
+~~~
+

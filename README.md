@@ -955,3 +955,43 @@ func solution(_ elements: [Int]) -> Int {
 }
 ~~~
 
+
+
+### 택배상자
+
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/131704
+  - stack
+
+~~~swift
+import Foundation
+
+func solution(_ order:[Int]) -> Int {
+    var stack = [Int]()
+    var count = 0
+    var j = 0
+    for i in order.indices {
+        if j >= order.count { break }
+        let target = i + 1
+        if target == order[j] { count += 1; j += 1 }
+        else {
+            while !stack.isEmpty && stack.last! == order[j] {
+                if j >= order.count { break }
+                stack.removeLast()
+                count += 1
+                j += 1
+            }
+            stack.append(target)   
+        }
+    }
+    
+    while !stack.isEmpty && stack.last! == order[j] {
+        if j >= order.count { break }
+        stack.removeLast()
+        count += 1
+        j += 1
+    }
+    
+    return count
+} 
+~~~
+

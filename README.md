@@ -957,41 +957,52 @@ func solution(_ elements: [Int]) -> Int {
 
 
 
-### 택배상자
+### 피로도
 
-- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/131704
-  - stack
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/87946
+  - permutation, brute-force
 
 ~~~swift
 import Foundation
 
-func solution(_ order:[Int]) -> Int {
-    var stack = [Int]()
-    var count = 0
-    var j = 0
-    for i in order.indices {
-        if j >= order.count { break }
-        let target = i + 1
-        if target == order[j] { count += 1; j += 1 }
-        else {
-            while !stack.isEmpty && stack.last! == order[j] {
-                if j >= order.count { break }
-                stack.removeLast()
-                count += 1
-                j += 1
+var permList: [Int] = []
+var chk = Set<Int>()
+var D: [[Int]] = []
+var K = 0
+var len = 0
+var Ans = 0
+func perm(_ idx: Int) {
+    if len == permList.count {
+        var ans = 0
+        var k = K
+        for idx in permList {
+            if D[idx][0] <= k {
+                k -= D[idx][1]
+                ans += 1
+            } else {
+                break
             }
-            stack.append(target)   
         }
+        Ans = Ans < ans ? ans : Ans
+        return
     }
-    
-    while !stack.isEmpty && stack.last! == order[j] {
-        if j >= order.count { break }
-        stack.removeLast()
-        count += 1
-        j += 1
+
+    for i in 0..<len {
+        if chk.contains(i) { continue }
+        chk.insert(i)
+        permList.append(i)
+        perm(idx+1)
+        chk.remove(i)
+        permList.removeLast()
     }
-    
-    return count
-} 
+}
+
+func solution(_ k: Int, _ dungeons:[[Int]]) -> Int {
+    len = dungeons.count
+    D = dungeons
+    K = k
+    perm(0)
+    return Ans
+}
 ~~~
 

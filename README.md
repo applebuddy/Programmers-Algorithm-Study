@@ -971,17 +971,13 @@ var D: [[Int]] = []
 var K = 0
 var len = 0
 var Ans = 0
-func perm(_ idx: Int) {
+func go(_ idx: Int) {
     if len == permList.count {
         var ans = 0
         var k = K
-        for idx in permList {
-            if D[idx][0] <= k {
-                k -= D[idx][1]
-                ans += 1
-            } else {
-                break
-            }
+        for idx in permList where D[idx][0] <= k {
+            k -= D[idx][1]
+            ans += 1
         }
         Ans = Ans < ans ? ans : Ans
         return
@@ -991,7 +987,7 @@ func perm(_ idx: Int) {
         if chk.contains(i) { continue }
         chk.insert(i)
         permList.append(i)
-        perm(idx+1)
+        go(idx+1)
         chk.remove(i)
         permList.removeLast()
     }
@@ -999,9 +995,8 @@ func perm(_ idx: Int) {
 
 func solution(_ k: Int, _ dungeons:[[Int]]) -> Int {
     len = dungeons.count
-    D = dungeons
-    K = k
-    perm(0)
+    (D, K) = (dungeons, k)
+    go(0)
     return Ans
 }
 ~~~

@@ -835,6 +835,24 @@ func solution(_ survey:[String], _ choices:[Int]) -> String {
 }
 ~~~
 
+
+
+### 없는 숫자 더하기
+
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/86051
+  - hash set
+
+~~~swift
+import Foundation
+
+func solution(_ numbers: [Int]) -> Int {
+    // subtracting, symmetricDifference 둘 다 가능
+    return Set(1...9).symmetricDifference(Set(numbers)).reduce(0, +)
+}
+~~~
+
+
+
 ### 숫자 짝꿍
 
 - problem link : https://school.programmers.co.kr/learn/courses/30/lessons/131128

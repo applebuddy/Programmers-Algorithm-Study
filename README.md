@@ -807,6 +807,34 @@ func solution(_ balls: Int, _ share: Int) -> Int {
 
 # Level 1
 
+### 성격 유형 검사하기
+
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/118666
+  - hash
+
+~~~swift
+import Foundation
+
+func solution(_ survey:[String], _ choices:[Int]) -> String {
+    let dic = survey.enumerated().reduce(into: [String: Int]()) { (result, tuple) in
+        let arr = Array(tuple.element).map(String.init)
+        let first = arr[0]
+        let second = arr[1]
+        let val = choices[tuple.offset] - 4
+        result[val > 0 ? second : first, default: 0] += val > 0 ? val : -val
+    }
+    let (R, T) = (dic["R", default: 0], dic["T", default: 0])
+    let (C, F) = (dic["C", default: 0], dic["F", default: 0])
+    let (J, M) = (dic["J", default: 0], dic["M", default: 0])
+    let (A, N) = (dic["A", default: 0], dic["N", default: 0])
+    let one = R >= T ? "R" : "T"
+    let two = C >= F ? "C" : "F"
+    let three = J >= M ? "J" : "M"
+    let four = A >= N ? "A" : "N"
+    return one + two + three + four
+}
+~~~
+
 ### 숫자 짝꿍
 
 - problem link : https://school.programmers.co.kr/learn/courses/30/lessons/131128

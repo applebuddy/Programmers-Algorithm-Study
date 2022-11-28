@@ -807,6 +807,42 @@ func solution(_ balls: Int, _ share: Int) -> Int {
 
 # Level 1
 
+### 명예의 전당(1)
+
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/138477
+
+- binary-search, sorting
+
+~~~swift
+import Foundation
+
+extension Array where Element == Int {
+   mutating func binaryInsert(_ num: Int) {
+        if self.isEmpty { self.append(num); return }
+        var left = 0
+        var right = self.count-1
+        while left <= right {
+            let mid = (left + right) / 2
+            if self[mid] < num {
+                left = mid + 1
+            } else {
+                right = mid - 1
+            }
+        }
+        self.insert(num, at: left)
+    }
+}
+
+func solution(_ k: Int, _ score: [Int]) -> [Int] {
+    var (ans, arr) = ([Int](), [Int]())
+    return score.reduce(into: (ans, arr)) { (tuple, num) in 
+        tuple.1.binaryInsert(num)
+        tuple.0 += [tuple.1[tuple.1.count <= k ? 0 : tuple.1.count-k]]
+    }.0
+}
+~~~
+
+
 ### 성격 유형 검사하기
 
 - problem link : https://school.programmers.co.kr/learn/courses/30/lessons/118666

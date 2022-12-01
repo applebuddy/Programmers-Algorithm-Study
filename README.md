@@ -807,6 +807,42 @@ func solution(_ balls: Int, _ share: Int) -> Int {
 
 # Level 1
 
+### 문자열 나누기
+
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/140108
+
+- string
+
+~~~swift
+import Foundation
+
+func solution(_ s: String) -> Int {
+    var (l, r) = (0, 0)
+    var first = ""
+    var ans = 0
+    for char in s {
+        if first.isEmpty {
+            first = "\(char)"
+            l = 1
+            continue
+        }
+
+        if "\(char)" == first { l += 1 }
+        else { r += 1 }
+        if l == r { 
+            ans += 1
+            l = 0
+            r = 0
+            first = ""
+        }
+    }
+    ans += l + r > 0 ? 1 : 0
+    return ans
+}
+~~~
+
+
+
 ### 명예의 전당(1)
 
 - problem link : https://school.programmers.co.kr/learn/courses/30/lessons/138477

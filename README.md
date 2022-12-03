@@ -807,10 +807,35 @@ func solution(_ balls: Int, _ share: Int) -> Int {
 
 # Level 1
 
+
+
+### 과일 장수
+
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/135808
+- sorting
+
+~~~swift
+import Foundation
+
+func solution(_ k:Int, _ m:Int, _ score:[Int]) -> Int {
+    var mn = Int.max
+    return score.sorted(by: >).enumerated().reduce(into: 0) { ans, tuple in
+        let (idx, num) = (tuple.0, tuple.1)
+        mn = mn > num ? num : mn
+        if idx % m == m - 1 {
+            ans += mn * m
+            mn = Int.max
+        }
+    }
+}
+~~~
+
+
+
 ### 최소직사각형
 
-- 모든 명함을 수용 가능한 가장 최소 크기의 지값 넓이 구하기
 - problem link : https://school.programmers.co.kr/learn/courses/30/lessons/86491
+- 모든 명함을 수용 가능한 가장 최소 크기의 지값 넓이 구하기
 - sorting
 
 ~~~swift

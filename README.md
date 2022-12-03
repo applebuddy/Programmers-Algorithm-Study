@@ -807,6 +807,31 @@ func solution(_ balls: Int, _ share: Int) -> Int {
 
 # Level 1
 
+### 최소직사각형
+
+- 모든 명함을 수용 가능한 가장 최소 크기의 지값 넓이 구하기
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/86491
+- sorting
+
+~~~swift
+import Foundation
+
+func solution(_ sizes:[[Int]]) -> Int {
+    var mx = [0, 0]
+    for i in sizes.indices {
+        var size = sizes[i]
+        if size[0] < size[1] {
+            size.swapAt(0, 1)
+        }
+        mx[0] = mx[0] < size[0] ? size[0] : mx[0]
+        mx[1] = mx[1] < size[1] ? size[1] : mx[1]
+    }
+    return mx.reduce(1, *)
+}
+~~~
+
+
+
 ### 문자열 나누기
 
 - problem link : https://school.programmers.co.kr/learn/courses/30/lessons/140108

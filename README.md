@@ -809,6 +809,30 @@ func solution(_ balls: Int, _ share: Int) -> Int {
 
 
 
+### 콜라 문제
+
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/132267?language=swift
+- math
+
+~~~swift
+import Foundation
+
+func solution(_ a: Int, _ b: Int, _ n: Int) -> Int {
+    var (have, ans) = (n, 0)
+    while have >= a {
+        let bonus = (have / a) * b
+        ans += bonus
+        have %= a
+        have += bonus
+    }
+    return ans
+}
+~~~
+
+
+
+
+
 ### 과일 장수
 
 - problem link : https://school.programmers.co.kr/learn/courses/30/lessons/135808

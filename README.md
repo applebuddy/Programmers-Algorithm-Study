@@ -1124,7 +1124,29 @@ func solution(_ arrayA:[Int], _ arrayB:[Int]) -> Int {
 
 # Level 2
 
+### 귤 고르기
 
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/138476
+  - sorting, hash
+
+~~~swift
+import Foundation
+
+func solution(_ k: Int, _ tangerine: [Int]) -> Int {
+    let array = tangerine.reduce(into: [Int: Int]()) { result, num in
+        result[num, default: 0] += 1
+    }
+    .sorted { $0.value > $1.value }
+    
+    var (count, ans) = (0, 0)
+    for tuple in array {
+        count += tuple.value
+        ans += 1
+        if k <= count { break }
+    }
+    return ans
+}
+~~~
 
 ### 연속 부분 수열 합의 개수
 

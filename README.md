@@ -807,6 +807,30 @@ func solution(_ balls: Int, _ share: Int) -> Int {
 
 # Level 1
 
+### 가장 가까운 같은 글자
+
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/142086
+- dictionary, string
+
+~~~swift
+import Foundation
+
+func solution(_ s: String) -> [Int] {
+    var dic = [Int](repeating: -1, count: 27)
+    return s.enumerated().reduce(into: [Int]()) { result, tuple in
+        let index = tuple.offset
+        let char = tuple.element
+        let ascii = Int(char.asciiValue!) - 97
+        if dic[ascii] != -1 {
+            result.append(index - dic[ascii])
+        } else {
+            result.append(-1)
+        }
+        dic[ascii] = index
+    }
+}
+~~~
+
 
 
 ### 콜라 문제

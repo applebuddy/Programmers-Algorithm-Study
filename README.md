@@ -1173,6 +1173,68 @@ func solution(_ arrayA:[Int], _ arrayB:[Int]) -> Int {
 
 # Level 2
 
+### 전력망을 둘로 나누기
+
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/86971
+- brute force, DFS
+
+~~~ swift
+import Foundation
+
+var G = [[Int]](repeating: [Int](), count: 101)
+var originDic = [Bool](repeating: false, count: 101)
+var dic = [Bool](repeating: false, count: 101)
+var cutPos = [Int]()
+var visitCount = 0
+
+func dfs(at index: Int) {
+    for i in G[index].indices {
+        let next = G[index][i]
+        if dic[next] { continue }
+        let route = [index, next]
+        if route == cutPos || route == [cutPos[1], cutPos[0]] { continue }
+        dic[next] = true
+        visitCount += 1
+        dfs(at: next)
+    }
+}
+
+func solution(_ n: Int, _ wires: [[Int]]) -> Int {
+    if n == 2 { return 0 }
+
+    for wire in wires {
+        G[wire[0]].append(wire[1])
+        G[wire[1]].append(wire[0])
+    }
+
+    var ans = n-1
+    for wire in wires {
+        cutPos = wire
+        var counts = [Int]()
+        dic = originDic
+        for i in 1...n {
+            if dic[i] { continue }
+            dic[i] = true
+            visitCount += 1
+            dfs(at: i)
+            if visitCount > 0 {
+                counts.append(visitCount)
+                visitCount = 0
+            }
+            if counts.count == 2 {
+                var diff = counts[0] - counts[1]
+                diff *= diff < 0 ? -1 : 1
+                ans = ans > diff ? diff : ans
+                break
+            }
+        }
+    }
+    return ans
+}
+~~~
+
+
+
 ### 귤 고르기
 
 - problem link : https://school.programmers.co.kr/learn/courses/30/lessons/138476

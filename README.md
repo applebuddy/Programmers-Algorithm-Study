@@ -807,6 +807,31 @@ func solution(_ balls: Int, _ share: Int) -> Int {
 
 # Level 1
 
+### 크기가 작은 부분 문자열
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/147355
+
+- string
+
+~~~swift
+import Foundation
+
+func solution(_ t: String, _ p: String) -> Int {
+    let tArray = Array(t).map(String.init)
+    let pArray = Array(p).map(String.init)
+    let tCount = tArray.count
+    let pCount = pArray.count
+    let pString = pArray.joined()
+    var ans = 0
+    for index in 0...(tCount-pCount) {
+        let subString = tArray[index..<index+pCount].joined()
+        ans += pString >= subString ? 1 : 0
+    }
+    return ans
+}
+~~~
+
+
+
 ### 가장 가까운 같은 글자
 
 - problem link : https://school.programmers.co.kr/learn/courses/30/lessons/142086

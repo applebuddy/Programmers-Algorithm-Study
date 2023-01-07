@@ -1326,3 +1326,46 @@ func solution(_ k: Int, _ dungeons:[[Int]]) -> Int {
 }
 ~~~
 
+
+
+### 혼자 놀기의 달인
+
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/131130
+
+~~~swift
+import Foundation
+
+func solution(_ cards: [Int]) -> Int {
+    var dic = [Bool](repeating: false, count: cards.count)
+    func checkCount(idx: Int) -> Int {
+        var count = 0
+        var idx = idx
+        while true {
+            let newIdx = cards[idx] - 1
+            if cards.indices ~= newIdx && dic[newIdx] == false {
+                dic[newIdx] = true
+                count += 1
+                idx = newIdx
+                print("number : \(newIdx + 1)")
+            } else {
+                return count
+            }
+        }
+    }
+    
+    var (first, second) = (0, 0)
+    for idx in cards.indices {
+        if dic[idx] { continue }
+        let count = checkCount(idx: idx)
+        if first < count {
+            second = first
+            first = count
+        } else if second < count {
+            second = count
+        }
+    }
+
+    return first * second
+}
+~~~
+

@@ -1175,6 +1175,36 @@ func solution(_ arrayA:[Int], _ arrayB:[Int]) -> Int {
 
 
 
+### 뒤에 있는 큰 수 찾기
+
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/154539#
+- stack
+
+~~~swift
+import Foundation
+
+func solution(_ numbers: [Int]) -> [Int] {
+    var dic: [Int: Bool] = [:]
+    var stack: [Int] = []
+    for (index, number) in numbers.enumerated() {
+        if stack.isEmpty { stack.append(number); continue }
+        var prevIndex = index - 1
+        while prevIndex >= 0 && stack[prevIndex] < number {
+            defer { prevIndex -= 1 }
+            if dic[prevIndex] != nil { continue }
+            stack[prevIndex] = number
+            dic[prevIndex] = true
+        }
+        stack.append(number)
+    }
+    return stack.enumerated().map { dic[$0.offset] == nil ? -1 : $0.element }
+}
+~~~
+
+
+
+
+
 ### 숫자 변환하기
 
 - problem link : https://school.programmers.co.kr/learn/courses/30/lessons/154538

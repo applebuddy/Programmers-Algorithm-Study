@@ -1173,6 +1173,42 @@ func solution(_ arrayA:[Int], _ arrayB:[Int]) -> Int {
 
 # Level 2
 
+
+
+### 숫자 변환하기
+
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/154538
+- dynamic programming (as a bottom-up way)
+
+~~~swift
+import Foundation
+
+func solution(_ x: Int, _ y: Int, _ n: Int) -> Int {
+    var dp: [Int: Int] = [:]
+    dp[x] = 0
+    for num in x...y {
+        if dp[num - n] != nil {
+            dp[num] = dp[num-n, default: 0] + 1   
+        }
+        if num % 2 == 0 && dp[num/2] != nil {
+            let prev = dp[num] ?? Int.max
+            let now = dp[num/2, default: 0] + 1
+            dp[num] = min(prev, now)
+        }
+        if num % 3 == 0 && dp[num/3] != nil {
+            let prev = dp[num] ?? Int.max
+            let now = dp[num/3, default: 0] + 1
+            dp[num] = min(prev, now)
+        }
+    }
+    return dp[y] == nil ? -1 : dp[y]!
+}
+~~~
+
+
+
+
+
 ### 전력망을 둘로 나누기
 
 - problem link : https://school.programmers.co.kr/learn/courses/30/lessons/86971

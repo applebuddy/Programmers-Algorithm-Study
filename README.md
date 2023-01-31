@@ -1175,6 +1175,31 @@ func solution(_ arrayA:[Int], _ arrayB:[Int]) -> Int {
 
 
 
+### 롤케이크 자르기
+
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/132265
+- hash
+
+~~~swift
+import Foundation
+
+func solution(_ topping: [Int]) -> Int {
+    var dic = topping.reduce(into: [Int: Int]()) { $0[$1, default: 0] += 1 }
+    var dic2: [Int: Int] = [:]
+
+    return topping.reduce(into: 0) { ans, type in
+        dic2[type, default: 0] += 1
+        dic[type, default: 0] -= 1
+        dic[type] = dic[type] == 0 ? nil : dic[type]
+        ans += dic.count == dic2.count ? 1 : 0
+    }
+}
+~~~
+
+
+
+
+
 ### 뒤에 있는 큰 수 찾기
 
 - problem link : https://school.programmers.co.kr/learn/courses/30/lessons/154539#

@@ -1175,6 +1175,34 @@ func solution(_ arrayA:[Int], _ arrayB:[Int]) -> Int {
 
 
 
+### 점 찍기
+
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/140107
+- mathematics
+
+~~~swift
+import Foundation
+
+func solution(_ k: Int, _ d: Int) -> Int64 {
+    // 원의 방정식 참고하여 1사분면에 있는 좌표의 갯수를 계산
+    func circleEquation(_ x: Int) -> Int {
+        return Int(sqrt(Double(d * d - x * x)))
+    }
+    
+    var x = 0
+    var ans = 0
+    while x <= d {
+        defer { x += k }
+        let y = circleEquation(x)
+        ans += y / k + 1
+    }
+    
+    return Int64(ans)
+}
+~~~
+
+
+
 ### N^2 배열 자르기
 
 - problem link : https://school.programmers.co.kr/learn/courses/30/lessons/87390
@@ -1187,8 +1215,6 @@ func solution(_ n: Int, _ left: Int64, _ right: Int64) -> [Int] {
     (left...right).map { max(Int($0)/n, Int($0)%n) + 1 }
 }
 ~~~
-
-
 
 
 

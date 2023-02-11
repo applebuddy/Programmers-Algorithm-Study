@@ -1175,6 +1175,23 @@ func solution(_ arrayA:[Int], _ arrayB:[Int]) -> Int {
 
 
 
+### N^2 배열 자르기
+
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/87390
+- mathematics
+
+~~~swift
+import Foundation
+
+func solution(_ n: Int, _ left: Int64, _ right: Int64) -> [Int] {
+    (left...right).map { max(Int($0)/n, Int($0)%n) + 1 }
+}
+~~~
+
+
+
+
+
 ### 호텔 대실
 
 - problem link : https://school.programmers.co.kr/learn/courses/30/lessons/155651

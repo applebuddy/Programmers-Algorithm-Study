@@ -1173,7 +1173,66 @@ func solution(_ arrayA:[Int], _ arrayB:[Int]) -> Int {
 
 # Level 2
 
+### 모음 사전
 
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/84512
+- bruteForce
+
+~~~swift
+import Foundation
+
+func solution(_ word:String) -> Int {
+    let target = Array(word).map(String.init)
+    var now = ["A"]
+    var count = 1
+    
+    func increase() {
+        switch now.last! {
+            case "A": 
+                now.removeLast()
+                now.append("E")
+            case "E": 
+                now.removeLast()
+                now.append("I")
+            case "I":
+                now.removeLast()
+                now.append("O")
+            case "O": 
+                now.removeLast()
+                now.append("U")
+            default:
+                return
+        }
+    }
+
+    while true {
+        defer {
+            // print("now : \(now), count : \(count)")
+        }
+
+        if now == target { return count }
+        if now.count < 5 {
+            now.append("A")
+            count += 1
+            continue
+        }
+        
+        switch now.last! {
+            case "A", "E", "I", "O": 
+                increase()
+            case "U":
+                now.removeLast()
+                while now.isEmpty == false && now.last == "U" {
+                    now.removeLast()
+                }
+                increase()
+            default: continue
+        }
+        count += 1
+    }
+    return count
+}
+~~~
 
 ### 점 찍기
 

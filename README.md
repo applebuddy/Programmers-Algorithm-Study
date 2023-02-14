@@ -1173,6 +1173,36 @@ func solution(_ arrayA:[Int], _ arrayB:[Int]) -> Int {
 
 # Level 2
 
+### k진수에서 소수 개수 구하기
+
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/92335
+- string, math
+
+~~~swift
+import Foundation
+
+extension Int {
+    var isPrime: Bool {
+        if self < 2 { return false }
+        var i = 2
+        while i * i <= self {
+            if self % i == 0 { return false }
+            i += 1
+        }
+        return true
+    }
+}
+
+func solution(_ n: Int, _ k: Int) -> Int {
+    let string = String(n, radix: k)
+    return string.split(separator: "0").reduce(into: 0) {
+        $0 += Int(String($1))?.isPrime == true ? 1 : 0
+    }
+}
+~~~
+
+
+
 ### 모음 사전
 
 - problem link : https://school.programmers.co.kr/learn/courses/30/lessons/84512

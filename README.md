@@ -1173,6 +1173,76 @@ func solution(_ arrayA:[Int], _ arrayB:[Int]) -> Int {
 
 # Level 2
 
+
+
+### 미로 탈출
+
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/159993
+- BFS(Breadth-First Search)
+
+~~~swift
+import Foundation
+
+func solution(_ maps: [String]) -> Int {
+    typealias Pos = (x: Int, y: Int)
+    var graph = maps.reduce(into: [[String]]()) { result, map in
+        result.append(Array(map).map(String.init))
+    }
+    
+    var sPos: Pos = (0, 0)
+    var lPos: Pos = (0, 0)
+    var ePos: Pos = (0, 0)
+    
+    for i in graph.indices {
+        for j in graph[0].indices {
+            if graph[i][j] == "S" { sPos = (i, j) }
+            else if graph[i][j] == "L" { lPos = (i, j) }
+            else if graph[i][j] == "E" { ePos = (i, j) }
+        }
+    }
+    
+    let col = graph[0].count
+    let row = graph.count
+    var Chk = [[Bool]](repeating: [Bool](repeating: false, count: col), count: row)
+    let dx = [0, 0, 1, -1]
+    let dy = [-1, 1, 0, 0]
+    
+    func bfs(_ from: Pos, _ to: Pos) -> Int {
+        var chk = Chk
+        chk[from.0][from.1] = true
+        var queue: [[Int]] = [[from.0, from.1, 0]]
+        var cur = 0
+        while cur < queue.count {
+            let now = queue[cur]
+            let x = now[0]
+            let y = now[1]
+            let dist = now[2]
+            cur += 1
+            for i in dx.indices {
+                let nx = x + dx[i]
+                let ny = y + dy[i]
+                if nx < 0 || ny < 0 || nx >= row || ny >= col { continue }
+                if chk[nx][ny] || graph[nx][ny] == "X" { continue }
+                chk[nx][ny] = true
+                if nx == to.0 && ny == to.1 { return dist + 1 }
+                queue.append([nx, ny, dist+1])
+            }
+        }
+        return -1
+    }
+    
+    let dist = bfs(sPos, lPos)
+    let dist2 = bfs(lPos, ePos)
+    
+    if dist == -1 || dist2 == -1 { return -1 }
+    return dist + dist2
+}
+~~~
+
+
+
+
+
 ### k진수에서 소수 개수 구하기
 
 - problem link : https://school.programmers.co.kr/learn/courses/30/lessons/92335

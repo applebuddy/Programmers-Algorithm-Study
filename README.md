@@ -1175,6 +1175,38 @@ func solution(_ arrayA:[Int], _ arrayB:[Int]) -> Int {
 
 
 
+### 택배 배달과 수거하기 (K)
+
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/150369
+- Greedy
+
+~~~swift
+import Foundation
+
+func solution(_ cap: Int, _ n: Int, _ deliveries: [Int], _ pickups: [Int]) -> Int64 {
+    var (d, p) = (0, 0)
+    return zip(deliveries, pickups)
+        .enumerated()
+        .reversed()
+        .reduce(into: 0) { result, tuple in
+            let (i, (del, pic)) = tuple
+            d -= del
+            p -= pic
+            var cnt = 0
+            while d < 0 || p < 0 {
+                d += cap
+                p += cap
+                cnt += 1
+            }
+            result += Int64((i + 1) * 2 * cnt)
+        }
+}
+~~~
+
+
+
+
+
 ### 미로 탈출
 
 - problem link : https://school.programmers.co.kr/learn/courses/30/lessons/159993

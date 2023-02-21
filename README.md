@@ -807,6 +807,36 @@ func solution(_ balls: Int, _ share: Int) -> Int {
 
 # Level 1
 
+### 둘만의 암호
+
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/155652
+- String
+
+~~~swift
+import Foundation
+
+func solution(_ s: String, _ skip: String, _ index: Int) -> String {
+    let dic = skip.reduce(into: [Bool](repeating: false, count: 27)) { arr, char in
+        let ascii = Int(char.asciiValue!) - 97
+        arr[ascii] = true
+    }
+    return s.reduce(into: "") { result, char in
+        var ascii = Int(char.asciiValue!) - 97
+        var count = 0
+        while count < index {
+            ascii = (ascii + 1) % 26
+            if dic[ascii] { continue }
+            count += 1
+        }
+        result += "\(Character(Unicode.Scalar(ascii + 97)!))"
+    }
+}
+~~~
+
+
+
+
+
 ### 크기가 작은 부분 문자열
 - problem link : https://school.programmers.co.kr/learn/courses/30/lessons/147355
 

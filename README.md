@@ -807,6 +807,42 @@ func solution(_ balls: Int, _ share: Int) -> Int {
 
 # Level 1
 
+### 대충 만든 자판
+
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/160586
+- simulation
+
+~~~swift
+import Foundation
+
+func solution(_ keymap: [String], _ targets: [String]) -> [Int] {
+    let dic = keymap.reduce(into: [Character: Int]()) { result, key in
+        key.enumerated().forEach { index, char in
+            if result[char] != nil {
+                result[char] = min(result[char]!, index + 1)
+            } else {
+                result[char] = index + 1
+            }
+        }
+    }
+    
+    var ans: [Int] = []
+    for target in targets {
+        var count = 0
+        for char in target {
+            if dic[char] == nil { count = -1; break }
+            count += dic[char]!
+        }
+        ans.append(count == -1 ? -1 : count)   
+    }
+    return ans
+}
+~~~
+
+
+
+
+
 ### 둘만의 암호
 
 - problem link : https://school.programmers.co.kr/learn/courses/30/lessons/155652

@@ -807,6 +807,29 @@ func solution(_ balls: Int, _ share: Int) -> Int {
 
 # Level 1
 
+### 카드 뭉치
+
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/159994
+- simulation
+
+~~~swift
+import Foundation
+
+func solution(_ cards1: [String], _ cards2: [String], _ goal: [String]) -> String {
+    var (i, j) = (0, 0)
+    for s in goal {
+        if cards1.indices ~= i, cards1[i] == s {
+            i += 1
+        } else if cards2.indices ~= j, cards2[j] == s {
+            j += 1
+        } else { return "No" }
+    }
+    return "Yes"
+}
+~~~
+
+
+
 ### 대충 만든 자판
 
 - problem link : https://school.programmers.co.kr/learn/courses/30/lessons/160586

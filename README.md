@@ -807,6 +807,65 @@ func solution(_ balls: Int, _ share: Int) -> Int {
 
 # Level 1
 
+### 개인정보 수집 유효기간 (K)
+
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/150370
+- math, string
+
+~~~swift
+import Foundation
+
+extension Array where Element == Int {
+    var date: String {
+        return String(format: "%02d", self[0]) + 
+               String(format: ".%02d", self[1]) + 
+               String(format: ".%02d", self[2])
+    }
+    
+    mutating func addMonth(_ month: Int) {
+        self[0] += (month + self[1]) / 12
+        self[1] = (month + self[1]) % 12
+        if self[1] == 0 {
+            self[0] -= 1
+            self[1] = 12
+        }
+    }
+    
+    mutating func minusDate() {
+        if self[2] == 1 {
+            self[1] -= 1
+            self[2] = 28
+            if self[1] == 0 {
+                self[0] -= 1
+                self[1] = 12
+            }
+        } else {
+            self[2] -= 1
+        }
+    }
+}
+
+func solution(_ today: String, _ terms: [String], _ privacies: [String]) -> [Int] {
+    let now = today.split(separator: ".").map { Int(String($0))! }
+    let dic = terms.reduce(into: [String: Int]()) {
+        let term = $1.split(separator: " ").map(String.init)
+        $0[term[0]] = Int(term[1])!
+    }
+    return privacies.enumerated().reduce(into: [Int]()) { result, tuple in 
+        let (i, p) = tuple
+        let arr = p.split(separator: " ").map(String.init)
+        var pDate = arr[0].split(separator: ".").map { Int(String($0))! }
+        let key = arr[1]
+        let month = dic[key]!            
+        pDate.addMonth(month)
+        pDate.minusDate()
+        if now.date > pDate.date { result.append(i + 1) }
+    }
+}
+~~~
+
+
+
 ### 카드 뭉치
 
 - problem link : https://school.programmers.co.kr/learn/courses/30/lessons/159994

@@ -1321,6 +1321,56 @@ func solution(_ arrayA:[Int], _ arrayB:[Int]) -> Int {
 
 # Level 2
 
+### 우박수열 정적분
+
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/134239
+- math
+
+~~~swift
+import Foundation
+
+func solution(_ k: Int, _ ranges: [[Int]]) -> [Double] {
+    var areas: [Double] = []
+    var num = k
+    var prev = k
+    var set: Set<Int> = []
+    while true {
+        if num % 2 == 0 { num /= 2 }
+        else { num = num * 3 + 1 }
+        if num <= 1 || set.contains(num) { break }
+        set.insert(num)
+        let area = Double(prev + num) / 2.0
+        areas.append(area)
+        prev = num
+    }
+    let area = Double(prev + 1) / 2.0
+    areas.append(area)
+
+    let sums = areas.reduce(into: [Double]()) { result, area in
+        if result.isEmpty {
+            result.append(area)
+        } else {
+            result.append(result.last! + area)
+        }
+    }
+    let sumsLen = sums.count
+    return ranges.reduce(into: [Double]()) { result, range in
+        let (s, e) = (range[0], sumsLen + range[1] - 1)
+        if range[0] - range[1] == sumsLen { result.append(0) }
+        else if s > e { result.append(-1) }
+        else {
+            var sum = sums[e]
+            if s > 0 {
+                sum -= sums[s-1]
+            }
+            result.append(sum)
+        }
+    }
+}
+~~~
+
+
+
 
 
 ### 디펜스 게임

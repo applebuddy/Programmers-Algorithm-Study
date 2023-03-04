@@ -1321,6 +1321,29 @@ func solution(_ arrayA:[Int], _ arrayB:[Int]) -> Int {
 
 # Level 2
 
+### 덧칠하기
+
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/161989
+- greedy
+
+~~~swift
+import Foundation
+
+func solution(_ n: Int, _ m: Int, _ section: [Int]) -> Int {
+    var r = 0       
+    return section.reduce(into: 0) { result, n in
+        if r >= n { return }
+        r = n + m - 1
+        result += 1
+        if r >= section.last! { return }
+    }
+}
+~~~
+
+
+
+
+
 ### 우박수열 정적분
 
 - problem link : https://school.programmers.co.kr/learn/courses/30/lessons/134239

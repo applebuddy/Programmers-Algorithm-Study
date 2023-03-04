@@ -866,6 +866,37 @@ func solution(_ today: String, _ terms: [String], _ privacies: [String]) -> [Int
 
 
 
+### 바탕화면 정리
+
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/161990
+- math
+
+~~~swift
+import Foundation
+
+func solution(_ wallpaper: [String]) -> [Int] {
+    var min = (Int.max, Int.max)
+    var max = (0, 0)
+    wallpaper.enumerated().map { tuple in
+        let (i, string) = tuple
+        Array(string).enumerated().forEach { tuple2 in
+            let (j, char) = tuple2
+            if char == "#" {
+                min.0 = min.0 > i ? i : min.0
+                min.1 = min.1 > j ? j : min.1
+                max.0 = max.0 < i ? i : max.0
+                max.1 = max.1 < j ? j : max.1
+            }
+        }
+    }
+    return [min.0, min.1, max.0+1, max.1+1]
+}
+~~~
+
+
+
+
+
 ### 카드 뭉치
 
 - problem link : https://school.programmers.co.kr/learn/courses/30/lessons/159994

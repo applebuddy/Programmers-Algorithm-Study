@@ -2343,3 +2343,37 @@ func solution(_ cards: [Int]) -> Int {
 }
 ~~~
 
+
+
+# Level 3
+
+### 연속 펄스 부분 수열의 합
+
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/161988
+- math
+
+~~~swift
+import Foundation
+
+func solution(_ sequence: [Int]) -> Int64 {
+    func checkSum(startFlag: Int64) {
+        var sum: Int64 = 0
+        var flag = startFlag
+        for n in sequence.map(Int64.init) {
+            let now = n * flag
+            if sum + now >= 0 { 
+                sum += now 
+            } else {
+                sum = 0
+            }
+            ans = ans < sum ? sum : ans
+            flag *= -1
+        }
+    }
+    var ans: Int64 = 0
+    checkSum(startFlag: 1)
+    checkSum(startFlag: -1)
+    return ans
+}
+~~~
+

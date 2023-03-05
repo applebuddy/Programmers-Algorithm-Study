@@ -866,6 +866,31 @@ func solution(_ today: String, _ terms: [String], _ privacies: [String]) -> [Int
 
 
 
+### 푸드 파이트 대회
+
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/134240
+- math
+
+~~~swift
+import Foundation
+
+func solution(_ food: [Int]) -> String {
+    var s: [String] = []
+    food.enumerated().forEach { tuple in
+        let (i, n) = tuple
+        let cnt = n / 2
+        if cnt > 0 {
+            s += [String](repeating: "\(i)", count: cnt)
+        }
+    }
+    return (s + ["0"] + s.reversed()).joined()
+}
+~~~
+
+
+
+
+
 ### 바탕화면 정리
 
 - problem link : https://school.programmers.co.kr/learn/courses/30/lessons/161990

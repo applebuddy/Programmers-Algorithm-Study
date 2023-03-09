@@ -866,6 +866,35 @@ func solution(_ today: String, _ terms: [String], _ privacies: [String]) -> [Int
 
 
 
+### 기사단원의 무기
+
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/136798
+- math
+
+~~~swift
+import Foundation
+
+func solution(_ number: Int, _ limit: Int, _ power: Int) -> Int {
+    return (1...number).reduce(into: 0) { result, n in
+        var (i, count) = (1, 0)
+        while i * i <= n {
+            if n % i == 0 {
+                count += 1 
+                if i * i < n {
+                    count += 1
+                }
+            }
+            i += 1
+        }
+        result += count <= limit ? count : power
+    }
+}
+~~~
+
+
+
+
+
 ### 푸드 파이트 대회
 
 - problem link : https://school.programmers.co.kr/learn/courses/30/lessons/134240

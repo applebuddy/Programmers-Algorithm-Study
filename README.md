@@ -1406,6 +1406,62 @@ func solution(_ arrayA:[Int], _ arrayB:[Int]) -> Int {
 
 # Level 2
 
+### 리코쳇 로봇
+
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/169199
+- BFS
+
+~~~swift
+import Foundation
+
+let dx = [1, -1, 0, 0]
+let dy = [0, 0, -1, 1]
+
+func solution(_ board: [String]) -> Int {
+    var sPos = (0, 0)
+    let G = board.enumerated().map { tuple -> [String] in
+        let (i, array) = tuple
+        return Array(array).enumerated().map { tuple2 in
+            let (j, char) = tuple2
+            if char == "R" {
+                sPos = (i, j)
+            }
+            return "\(char)"
+        }
+    }
+    var C = [[Bool]](repeating: [Bool](repeating: false, count: G[0].count), count: G.count)
+    C[sPos.0][sPos.1] = true
+    var cur = 0
+    var Q: [(Int, Int, Int)] = [(sPos.0, sPos.1, 0)]
+    while cur < Q.count {
+        let tuple = Q[cur]
+        let (x, y, dist) = tuple
+        cur += 1
+        for i in dx.indices {
+            var (nx, ny) = (x, y)
+            var (tx, ty) = (x, y)
+            while true {
+                tx += dx[i]
+                ty += dy[i]
+                if tx < 0 || ty < 0 || tx >= G.count || ty >= G[0].count { break }
+                if G[tx][ty] == "D" { break }
+                nx = tx
+                ny = ty
+            }
+            if C[nx][ny] { continue }
+            if G[nx][ny] == "G" { return dist+1 }
+            C[nx][ny] = true
+            Q.append((nx, ny, dist+1))
+        }
+    }
+    return -1
+}
+~~~
+
+
+
+
+
 ### 덧칠하기
 
 - problem link : https://school.programmers.co.kr/learn/courses/30/lessons/161989

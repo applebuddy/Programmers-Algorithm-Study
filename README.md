@@ -866,6 +866,68 @@ func solution(_ today: String, _ terms: [String], _ privacies: [String]) -> [Int
 
 
 
+### 공원 산책
+
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/172928
+- simulation
+
+~~~swift
+import Foundation
+
+let dx = [0, 1, 0, -1]
+let dy = [1, 0, -1, 0]
+
+func solution(_ park: [String], _ routes: [String]) -> [Int] {
+    var pos = (0, 0)
+    let G = park.enumerated().reduce(into: [[String]]()) { result, tuple in
+        let (i, string) = tuple
+        let array = string.enumerated().reduce(into: [String]()) { result2, tuple2 in
+            let (j, char) = tuple2
+            if char == "S" { pos = (i, j) }
+            result2.append("\(char)")
+        }
+        result.append(array)
+    }
+    let row = G.count
+    let col = G[0].count
+    return routes.reduce(into: [pos.0, pos.1]) { result, route in
+        let array = route.split(separator: " ").map { String($0) }
+        let dir = array[0]
+        let dist = Int(array[1])!
+        var ddx = 0
+        switch dir {
+        case "E":
+            ddx = 0
+        case "S":
+            ddx = 1
+        case "W":
+            ddx = 2
+        case "N":
+            ddx = 3
+        default: break
+        }
+        var isPossible = true
+        var nx = result[0]
+        var ny = result[1]
+        for _ in 0..<dist {
+            nx += dx[ddx]
+            ny += dy[ddx]
+            if nx < 0 || ny < 0 || nx >= row || ny >= col || G[nx][ny] == "X" { 
+                isPossible = false
+                break 
+            }
+        }
+        if isPossible { 
+            result = [nx, ny]
+        }
+    }
+}
+~~~
+
+
+
+
+
 ### 기사단원의 무기
 
 - problem link : https://school.programmers.co.kr/learn/courses/30/lessons/136798

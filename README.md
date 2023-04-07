@@ -1468,6 +1468,58 @@ func solution(_ arrayA:[Int], _ arrayB:[Int]) -> Int {
 
 # Level 2
 
+### 연속된 부분 수열의 합
+
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/178870
+- two pointer
+
+~~~swift
+import Foundation
+
+func solution(_ sequence: [Int], _ k: Int) -> [Int] {
+    var (l, r) = (0, -1)
+    var sum = 0
+    var min = Int.max
+    var ans: [Int] = []
+    var prev: [Int] = []
+
+    func compare(_ a: Int, _ b: Int) {
+        let diff = b - a
+        if min > diff {
+            min = diff
+            ans = [a, b]
+        }
+    }
+ 
+    while r < sequence.count {
+        while sum <= k, r < sequence.count {
+            r += 1
+            if r >= sequence.count { break }
+            sum += sequence[r]
+            if sum == k {
+                compare(l, r)
+                break
+            }
+        }
+
+        if r >= sequence.count { break }
+        while sum >= k, l < r {
+            sum -= sequence[l]
+            l += 1
+            if sum == k {
+                compare(l, r)
+                break
+            }
+        }
+        if prev == [l, r] { 
+            r += 1
+        }
+        prev = [l, r]
+    }
+    return ans
+}
+~~~
+
 ### 리코쳇 로봇
 
 - problem link : https://school.programmers.co.kr/learn/courses/30/lessons/169199

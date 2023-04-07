@@ -864,6 +864,25 @@ func solution(_ today: String, _ terms: [String], _ privacies: [String]) -> [Int
 }
 ~~~
 
+### 달리기 경주
+
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/178871
+- hash
+
+~~~swift
+import Foundation
+
+func solution(_ players: [String], _ callings: [String]) -> [String] {
+    var ps = players
+    var dic = ps.enumerated().reduce(into: [String: Int]()) { $0[$1.element] = $1.offset }
+    return callings.reduce(into: ps) { result, calling in
+        let idx = dic[calling]!
+        dic[calling]! -= 1
+        dic[result[idx-1]]! += 1
+        result.swapAt(idx, idx-1)
+    }
+}
+~~~
 
 
 ### 공원 산책

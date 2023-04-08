@@ -864,6 +864,22 @@ func solution(_ today: String, _ terms: [String], _ privacies: [String]) -> [Int
 }
 ~~~
 
+### 추억 점수
+
+- problem link : https://school.programmers.co.kr/learn/courses/30/lessons/176963?language=swift
+- hash
+
+~~~swift
+import Foundation
+
+func solution(_ name:[String], _ yearning:[Int], _ photo:[[String]]) -> [Int] {
+    let dic = [String: Int](uniqueKeysWithValues: zip(name, yearning))
+    return photo.map { ps in
+        return ps.reduce(into: 0) { $0 += dic[$1, default: 0] }
+    }
+}
+~~~
+
 ### 달리기 경주
 
 - problem link : https://school.programmers.co.kr/learn/courses/30/lessons/178871

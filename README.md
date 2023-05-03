@@ -1,6 +1,27 @@
 # Programmers-Algorithm-Study
 Uploading programmers study source codes for the first time
 
+# 기초 트레이닝
+
+### 주사위 게임 1
+
+- link : https://school.programmers.co.kr/learn/courses/30/lessons/181839
+
+~~~swift
+func solution(_ a: Int, _ b: Int) -> Int {
+    let isOdd: (Int) -> Bool = { $0 % 2 == 1 }
+    let (isAOdd, isBOdd) = (isOdd(a), isOdd(b))
+    switch (isAOdd, isBOdd) {
+    case (true, true): 
+        return a * a + b * b
+    case (true, false), (false, true): 
+        return 2 * (a + b)
+    case (false, false):
+        return (a - b) * (a >= b ? 1 : -1)
+    }
+    return 0
+}
+~~~
 
 
 # Level 0

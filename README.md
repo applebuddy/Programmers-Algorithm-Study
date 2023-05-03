@@ -3,6 +3,25 @@ Uploading programmers study source codes for the first time
 
 # 기초 트레이닝
 
+### 이어 붙인 수
+
+- link : https://school.programmers.co.kr/learn/courses/30/lessons/181928
+
+~~~swift
+func solution(_ num_list: [Int]) -> Int {
+    return num_list
+        .reduce(into: ["", ""]) { tp, num in
+            if num % 2 == 0 {
+                tp[0] += "\(num)"
+            } else {
+                tp[1] += "\(num)"
+            }
+        }
+        .map { Int($0)! }
+        .reduce(0, +)
+}
+~~~
+
 ### 주사위 게임 1
 
 - link : https://school.programmers.co.kr/learn/courses/30/lessons/181839

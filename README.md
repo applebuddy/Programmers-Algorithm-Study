@@ -4,6 +4,197 @@ Uploading programmers study source codes for the first time
 # 기초 트레이닝
 
 ~~~swift
+// 주사위 게임 2
+// - link : https://school.programmers.co.kr/learn/courses/30/lessons/181930
+func solution(_ a: Int, _ b: Int, _ c: Int) -> Int {
+    switch Set([a, b, c]).count {
+    case 1: return (a + b + c) * (a * a + b * b + c * c) * (a * a * a + b * b * b + c * c * c)
+    case 2: return (a + b + c) * (a * a + b * b + c * c)
+    default: return a + b + c
+    }
+}
+~~~
+
+~~~swift
+// l로 만들기
+// - link : https://school.programmers.co.kr/learn/courses/30/lessons/181834
+func solution(_ myString: String) -> String {
+    myString
+        .map { $0 < "l" ? "l" : "\($0)" }
+        .joined()
+}
+~~~
+
+~~~swift
+// 순서 바꾸기
+// - link : https://school.programmers.co.kr/learn/courses/30/lessons/181891
+func solution(_ num_list: [Int], _ n: Int) -> [Int] {
+    [Int](num_list[n...] + num_list[..<n])
+}
+~~~
+
+~~~swift
+// 간단한 식 계산하기
+// - link : https://school.programmers.co.kr/learn/courses/30/lessons/181865
+func solution(_ binomial: String) -> Int {
+    var (opt, first, second) = ("", "", "")
+    for char in binomial {
+        let s = "\(char)"
+        if ["+", "-", "*"].contains(s) { 
+            opt = s
+            first = second
+            second = ""
+            continue
+        }
+
+        second += s == " " ? "" : s
+    }
+
+    switch opt {
+    case "+": return Int(first)! + Int(second)!
+    case "-": return Int(first)! - Int(second)!
+    default: return Int(first)! * Int(second)!
+    }
+}
+~~~
+
+~~~swift
+// 접미사 배열
+// - link : https://school.programmers.co.kr/learn/courses/30/lessons/181909
+func solution(_ my_string: String) -> [String] {
+    my_string
+        .reversed()
+        .reduce(into: ("", [String]())) { result, char in
+            result.0 = "\(char)\(result.0)"
+            result.1.append(result.0)
+        }
+        .1.sorted()
+}
+~~~
+
+~~~swift
+// 특별한 이차원 배열
+// - link : https://school.programmers.co.kr/learn/courses/30/lessons/181831
+func solution(_ arr: [[Int]]) -> Int {
+    for i in arr.indices {
+        for j in arr[i].indices {
+            if arr[i][j] != arr[j][i] { return 0 }
+        }
+    }
+    return 1
+}
+~~~
+
+~~~swift
+// 공백으로 구분하기 2
+// - link : https://school.programmers.co.kr/learn/courses/30/lessons/181868
+func solution(_ my_string: String) -> [String] {
+    return my_string.split(separator: " ").map(String.init)
+}
+~~~
+
+~~~swift
+// 부분 문자열 이어 붙여 문자열 만들기
+// - link : https://school.programmers.co.kr/learn/courses/30/lessons/181911
+func solution(_ my_strings: [String], _ parts: [[Int]]) -> String {
+    zip(my_strings, parts)
+        .reduce(into: "") { ans, tp in
+            ans += Array(tp.0)[tp.1[0]...tp.1[1]].map(String.init).joined()
+        }
+}
+~~~
+
+~~~swift
+// 뒤에서 5등까지
+// - link : https://school.programmers.co.kr/learn/courses/30/lessons/181853
+func solution(_ num_list: [Int]) -> [Int] {
+    Array(num_list.sorted().prefix(5))
+}
+~~~
+
+~~~swift
+// 꼬리 문자열
+// - link : https://school.programmers.co.kr/learn/courses/30/lessons/181841
+func solution(_ str_list: [String], _ ex: String) -> String {
+    str_list.filter { !$0.contains(ex) }.joined()
+}
+~~~
+
+~~~swift
+// A 강조하기
+// - link : https://school.programmers.co.kr/learn/courses/30/lessons/181874
+func solution(_ myString: String) -> String {
+    Array(myString)
+        .map(String.init)
+        .map { ($0 == "a" || $0 == "A") ? $0.uppercased() : $0.lowercased() }
+        .joined()
+}
+~~~
+
+~~~swift
+// 배열의 원소만큼 추가하기
+// - link : https://school.programmers.co.kr/learn/courses/30/lessons/181861
+func solution(_ arr: [Int]) -> [Int] {
+    arr.flatMap { [Int](repeating: $0, count: $0) }
+}
+~~~
+
+~~~swift
+// 홀수 vs 짝수
+// - link : https://school.programmers.co.kr/learn/courses/30/lessons/181887
+func solution(_ num_list: [Int]) -> Int {
+    num_list
+        .enumerated()
+        .reduce(into: [0, 0]) {
+            if $1.offset % 2 == 0 {
+                $0[0] += $1.element
+            } else {
+                $0[1] += $1.element
+            }
+        }
+        .max()!
+}
+~~~
+
+~~~swift
+// 배열에서 문자열 대소문자 변환하기
+// - link : https://school.programmers.co.kr/learn/courses/30/lessons/181875
+func solution(_ strArr: [String]) -> [String] {
+    strArr
+        .enumerated()
+        .map { $0.offset % 2 == 0 ? $0.element.lowercased() : $0.element.uppercased() }
+}
+~~~
+
+~~~swift
+// 접미사인지 확인하기
+// - link : https://school.programmers.co.kr/learn/courses/30/lessons/181908
+func solution(_ my_string: String, _ is_suffix: String) -> Int {
+    my_string.hasSuffix(is_suffix) ? 1 : 0
+}
+~~~
+
+~~~swift
+// 특정한 문자를 대문자로 바꾸기
+// - link : https://school.programmers.co.kr/learn/courses/30/lessons/181873
+func solution(_ my_string: String, _ alp: String) -> String {
+    my_string.reduce(into: "") { 
+        let string = "\($1)"
+        $0 += (string == alp ? string.uppercased() : string)
+    }
+}
+~~~
+
+~~~swift
+// 글자 이어 붙여 문자열 만들기
+// - link : https://school.programmers.co.kr/learn/courses/30/lessons/181915
+func solution(_ my_string: String, _ index_list: [Int]) -> String {
+    let arr = Array(my_string)
+    return index_list.reduce(into: "") { $0 += "\(arr[$1])" }
+}
+~~~
+
+~~~swift
 // 문자열 바꿔서 찾기
 // link : https://school.programmers.co.kr/learn/courses/30/lessons/181864
 func solution(_ myString: String, _ pat: String) -> Int {

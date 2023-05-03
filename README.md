@@ -3,11 +3,86 @@ Uploading programmers study source codes for the first time
 
 # 기초 트레이닝
 
-### 이어 붙인 수
-
-- link : https://school.programmers.co.kr/learn/courses/30/lessons/181928
+~~~swift
+// 문자열 바꿔서 찾기
+// link : https://school.programmers.co.kr/learn/courses/30/lessons/181864
+func solution(_ myString: String, _ pat: String) -> Int {
+    myString
+        .reduce(into: "") { $0 += ($1 == "A" ? "B" : "A") }
+        .contains(pat) ? 1 : 0
+}
+~~~
 
 ~~~swift
+// n개 간격의 원소들
+// link : https://school.programmers.co.kr/learn/courses/30/lessons/181888
+func solution(_ num_list: [Int], _ n: Int) -> [Int] {
+    [Int](stride(from: 0, through: num_list.count - 1, by: n))
+        .map { num_list[$0] }
+}
+~~~
+
+~~~swift
+// 원하는 문자열 찾기
+// - link : https://school.programmers.co.kr/learn/courses/30/lessons/181878
+func solution(_ myString: String, _ pat: String) -> Int {
+    return myString.lowercased().contains(pat.lowercased()) ? 1 : 0
+}
+~~~
+
+~~~swift
+// 조건 문자열
+// - link : https://school.programmers.co.kr/learn/courses/30/lessons/181934
+func solution(_ ineq: String, _ eq: String, _ n: Int, _ m: Int) -> Int {
+    switch (ineq, eq) {
+    case (">", "="): return n >= m ? 1 : 0
+    case ("<", "="): return n <= m ? 1 : 0
+    case (">", "!"): return n > m ? 1 : 0
+    case ("<", "!"): return n < m ? 1 : 0
+    default: return 0
+    }
+}
+~~~
+
+~~~swift
+// 두 수의 연산 값 비교하기
+// - link : https://school.programmers.co.kr/learn/courses/30/lessons/181938
+func solution(_ a: Int, _ b: Int) -> Int {
+    let first = Int("\(a)\(b)")!
+    let second = 2 * a * b
+    return first > second ? first : second
+}
+~~~
+
+
+~~~swift
+// 문자열 섞기
+// - link : https://school.programmers.co.kr/learn/courses/30/lessons/181942
+func solution(_ str1: String, _ str2: String) -> String {
+    zip(str1, str2).map { "\($0.0)\($0.1)" }.joined()
+}
+~~~
+
+~~~swift
+// 문자열 겹쳐 쓰기
+// - link : https://school.programmers.co.kr/learn/courses/30/lessons/181943
+func solution(_ my_string: String, _ overwrite_string: String, _ s: Int) -> String {
+    let myArray = Array(my_string)
+    let otherArray = Array(overwrite_string)
+    return myArray
+        .enumerated()
+        .map {
+            guard $0.offset >= s, otherArray.indices ~= ($0.offset - s)
+            else { return "\($0.element)" }
+            return "\(otherArray[$0.offset - s])"
+        }
+        .joined()
+}
+~~~
+
+~~~swift
+// 이어 붙인 수
+// - link : https://school.programmers.co.kr/learn/courses/30/lessons/181928
 func solution(_ num_list: [Int]) -> Int {
     return num_list
         .reduce(into: ["", ""]) { tp, num in
@@ -22,11 +97,9 @@ func solution(_ num_list: [Int]) -> Int {
 }
 ~~~
 
-### 주사위 게임 1
-
-- link : https://school.programmers.co.kr/learn/courses/30/lessons/181839
-
 ~~~swift
+// 주사위 게임 1
+// - link : https://school.programmers.co.kr/learn/courses/30/lessons/181839
 func solution(_ a: Int, _ b: Int) -> Int {
     let isOdd: (Int) -> Bool = { $0 % 2 == 1 }
     let (isAOdd, isBOdd) = (isOdd(a), isOdd(b))
@@ -42,11 +115,9 @@ func solution(_ a: Int, _ b: Int) -> Int {
 }
 ~~~
 
-### 배열 만들기 1
-
-- link : https://school.programmers.co.kr/learn/courses/30/lessons/181901
-
 ~~~swift
+// 배열 만들기 1
+// - link : https://school.programmers.co.kr/learn/courses/30/lessons/181901
 func solution(_ n:Int,_ k:Int)->[Int]{[Int](stride(from: k, through: n, by: k))}
 ~~~
 

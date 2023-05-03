@@ -23,6 +23,14 @@ func solution(_ a: Int, _ b: Int) -> Int {
 }
 ~~~
 
+### 배열 만들기 1
+
+- link : https://school.programmers.co.kr/learn/courses/30/lessons/181901
+
+~~~swift
+func solution(_ n:Int,_ k:Int)->[Int]{[Int](stride(from: k, through: n, by: k))}
+~~~
+
 
 # Level 0
 

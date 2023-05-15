@@ -4,6 +4,68 @@ Uploading programmers study source codes for the first time
 # 기초 트레이닝
 
 ~~~swift
+// 가까운 1 찾기
+func solution(_ arr: [Int], _ idx: Int) -> Int {
+    return arr[idx...].indices.first(where: { arr[$0] == 1 }) ?? -1
+}
+~~~
+
+~~~swift
+// 9로 나눈 나머지
+func solution(_ number: String) -> Int {
+    return number
+        .map { (Int($0.asciiValue!) - 48) }
+        .reduce(0, +) % 9
+}
+~~~
+
+~~~swift
+// ad 제거하기
+func solution(_ strArr: [String]) -> [String] {
+    return strArr.filter { !$0.contains("ad") }
+}
+~~~
+
+~~~swift
+// 배열의 원소 삭제하기
+// - link : https://school.programmers.co.kr/learn/courses/30/lessons/181844
+func solution(_ arr: [Int], _ delete_list: [Int]) -> [Int] {
+    let set = Set(delete_list)
+    return arr.filter { !set.contains($0) }
+}
+~~~
+
+~~~ swift
+// 배열 비교하기
+// - link : https://school.programmers.co.kr/learn/courses/30/lessons/181856
+func solution(_ arr1: [Int], _ arr2: [Int]) -> Int {
+    if arr1.count > arr2.count { return 1 }
+    else if arr1.count < arr2.count { return -1 }
+    let sum = arr1.reduce(0, +)
+    let sum2 = arr2.reduce(0, +)
+    return sum == sum2 ? 0 : (sum > sum2 ? 1 : -1)
+}
+~~~
+
+~~~swift
+// 0 떼기
+// - link : https://school.programmers.co.kr/learn/courses/30/lessons/181847
+func solution(_ n_str: String) -> String {
+    let arr = Array(n_str).map(String.init)
+    let index = arr.indices.first(where: { arr[$0] != "0" })!
+    return arr[index...].joined()
+}
+~~~
+
+~~~swift
+// 5명씩
+// - link : https://school.programmers.co.kr/learn/courses/30/lessons/181886
+func solution(_ names: [String]) -> [String] {
+    return stride(from: 0, to: names.count, by: 5).map { names[$0] }
+}
+~~~
+
+~~~swift
 // 주사위 게임 2
 // - link : https://school.programmers.co.kr/learn/courses/30/lessons/181930
 func solution(_ a: Int, _ b: Int, _ c: Int) -> Int {

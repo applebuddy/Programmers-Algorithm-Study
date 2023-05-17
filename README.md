@@ -4,6 +4,23 @@ Uploading programmers study source codes for the first time
 # 기초 트레이닝
 
 ~~~swift
+// x 사이의 개수
+func solution(_ myString: String) -> [Int] {
+    let len = myString.count
+    return myString
+        .reduce(into: (0, 0, [Int]())) { result, char in
+        if char == "x" {
+            result.2.append(result.1)
+            result.1 = 0
+        } 
+        else { result.1 += 1 }
+        if result.0 == len - 1 { result.2.append(result.1) }
+        result.0 += 1
+    }.2
+}
+~~~
+
+~~~swift
 // 가까운 1 찾기
 func solution(_ arr: [Int], _ idx: Int) -> Int {
     return arr[idx...].indices.first(where: { arr[$0] == 1 }) ?? -1

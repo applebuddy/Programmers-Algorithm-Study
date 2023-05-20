@@ -4,6 +4,46 @@ Uploading programmers study source codes for the first time
 # 기초 트레이닝
 
 ~~~swift
+// 수 조작하기 2
+func solution(_ numLog: [Int]) -> String {
+    return numLog[1...]
+        .indices
+        .reduce(into: "") { result, idx in
+            switch numLog[idx] - numLog[idx-1] {
+            case 1: result += "w"
+            case -1: result += "s"
+            case 10: result += "d"
+            default: result += "a"
+            }
+        }
+}
+~~~
+
+~~~swift
+// 코드 처리하기
+func solution(_ code: String) -> String {
+    let len = code.count
+    return code
+        .map(String.init)
+        .reduce(into: ("0", "", 0)) { result, str in
+            let idx = result.2
+            switch result.0 {
+            case "0":
+                if str != "1" && idx % 2 == 0 { result.1 += str }
+                if str == "1" { result.0 = "1" }
+            default:
+                if str != "1" && idx % 2 == 1 { result.1 += str }
+                if str == "1" { result.0 = "0" }
+            }
+            result.2 += 1
+            if result.2 == len, result.1 == "" {
+                result.1 = "EMPTY"
+            }
+        }.1
+}
+~~~
+
+~~~swift
 // 문자열 뒤집기
 func solution(_ my_string: String, _ s: Int, _ e: Int) -> String {
     let arr = Array(my_string).map(String.init)

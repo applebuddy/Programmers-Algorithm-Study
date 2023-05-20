@@ -4,6 +4,14 @@ Uploading programmers study source codes for the first time
 # 기초 트레이닝
 
 ~~~swift
+// 문자열 뒤집기
+func solution(_ my_string: String, _ s: Int, _ e: Int) -> String {
+    let arr = Array(my_string).map(String.init)
+    return ((s == 0 ? [] : arr[0...(s-1)]) + arr[s...e].reversed() + arr[(e+1)...]).joined()
+}
+~~~
+
+~~~swift
 // x 사이의 개수
 func solution(_ myString: String) -> [Int] {
     let len = myString.count

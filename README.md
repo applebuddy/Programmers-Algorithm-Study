@@ -4,6 +4,28 @@ Uploading programmers study source codes for the first time
 # 기초 트레이닝
 
 ~~~swift
+// 글자 지우기
+func solution(_ my_string: String, _ indices: [Int]) -> String {
+    var array = my_string.map(String.init)
+    let len = indices.count
+    return indices
+        .reduce(into: ("", 0)) { result, index in
+            array[index] = ""
+            result.1 += 1
+            guard result.1 == len else { return }
+            result.0 = array.joined()
+        }.0
+}
+~~~
+
+~~~swift
+// 간단한 논리연산
+func solution(_ x1: Bool, _ x2: Bool, _ x3: Bool, _ x4: Bool) -> Bool {
+    (x1 || x2) && (x3 || x4)
+}
+~~~
+
+~~~swift
 // 수 조작하기 2
 func solution(_ numLog: [Int]) -> String {
     return numLog[1...]

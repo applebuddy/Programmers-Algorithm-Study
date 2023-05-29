@@ -4,6 +4,36 @@ Uploading programmers study source codes for the first time
 # 기초 트레이닝
 
 ~~~swift
+// 특정 문자열로 끝나는 가장 긴 부분 문자열 찾기
+func solution(_ myString: String, _ pat: String) -> String {
+    let myArr = Array(myString)
+    let patArr = Array(pat)
+    let pLen = patArr.count
+    var (pdx, ldx) = (0, 0)
+    for (idx, char) in myArr.enumerated() {
+        if patArr[pdx] == char { pdx += 1 }
+        if pLen == pdx { ldx = idx; pdx = 0 }
+    }
+    return myArr[...ldx].map(String.init).joined()
+}
+~~~
+
+~~~swift
+// 1로 만들기
+func solution(_ num_list: [Int]) -> Int {
+    return num_list.reduce(0) { result, num in
+        var (n, count) = (num, 0)
+        while n != 1 {
+            if n % 2 == 0 { n /= 2 } 
+            else { n = (n - 1) / 2 }
+            count += 1
+        }
+        return result + count
+    }
+}
+~~~
+
+~~~swift
 // 글자 지우기
 func solution(_ my_string: String, _ indices: [Int]) -> String {
     var array = my_string.map(String.init)

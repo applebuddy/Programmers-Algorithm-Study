@@ -4,6 +4,36 @@ Uploading programmers study source codes for the first time
 # 기초 트레이닝
 
 ~~~swift
+// 문자열이 몇 번 등장하는지 세기
+func solution(_ myString: String, _ pat: String) -> Int {
+    let myArr = Array(myString).map(String.init)
+    let patArr = Array(pat).map(String.init)
+    let myLen = myArr.count
+    let patLen = patArr.count
+    return myArr.indices.reduce(into: 0) { result, i in
+        guard i + patLen <= myLen else { return }
+        result += patArr == Array(myArr[i ..< (i + patLen)]) ? 1 : 0
+    }
+}
+~~~
+
+~~~swift
+// 특별한 이차원 배열
+func solution(_ n: Int) -> [[Int]] {
+    (0..<n).reduce(into: [[Int]]()) { result, i in
+        result.append((0..<n).map { i == $0 ? 1 : 0 })
+    }
+}
+~~~
+
+~~~swift
+// 배열 만들기 3
+func solution(_ arr: [Int], _ intervals: [[Int]]) -> [Int] {
+    return intervals.flatMap { arr[$0[0]...$0[1]] }
+}
+~~~
+
+~~~swift
 // 특정 문자열로 끝나는 가장 긴 부분 문자열 찾기
 func solution(_ myString: String, _ pat: String) -> String {
     let myArr = Array(myString)

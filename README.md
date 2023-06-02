@@ -3,6 +3,57 @@ Uploading programmers study source codes for the first time
 
 # 기초 트레이닝
 
+```swift
+// 배열 만들기 5
+func solution(_ intStrs: [String], _ k: Int, _ s: Int, _ l: Int) -> [Int] {
+    intStrs.reduce(into: [Int]()) { result, str in 
+        let integer = Int(Array(str)[s..<(s+l)].map(String.init).joined())!
+        if integer > k { result.append(integer) }
+    }
+}
+```
+
+```swift
+// 수열과 구간 쿼리 2
+func solution(_ arr: [Int], _ queries: [[Int]]) -> [Int] {
+    queries.reduce(into: [Int]()) { result, q in
+        result += [
+            arr[q[0]...q[1]]
+                .filter { $0 > q[2] }
+                .min() ?? -1
+        ]
+    }
+}
+```
+
+```swift
+// 수열과 구간 쿼리 3
+func solution(_ arr: [Int], _ queries: [[Int]]) -> [Int] {
+    return queries.reduce(into: arr) { result, q in
+        result.swapAt(q[0], q[1])
+    }
+}
+```
+
+```swift
+// 수열과 구간 쿼리 4
+func solution(_ arr: [Int], _ queries: [[Int]]) -> [Int] {
+    queries.reduce(into: arr) { result, q in 
+        (q[0]...q[1]).forEach { 
+            if $0 % q[2] == 0 { result[$0] += 1 } 
+        }                       
+    }
+}
+```
+
+```swift
+// 등차수열의 특정한 항만 더하기
+func solution(_ a: Int, _ d: Int, _ included: [Bool]) -> Int {
+    zip(stride(from: a, through: a + d * included.count, by: d), included)
+        .reduce(into: 0) { $0 += $1.1 ? $1.0 : 0 }
+}
+```
+
 ~~~swift
 // 문자열이 몇 번 등장하는지 세기
 func solution(_ myString: String, _ pat: String) -> Int {

@@ -4,6 +4,46 @@ Uploading programmers study source codes for the first time
 # 기초 트레이닝
 
 ```swift
+// 빈 배열에 추가, 삭제하기
+func solution(_ arr: [Int], _ flag: [Bool]) -> [Int] {
+    return flag
+        .enumerated()
+        .reduce(into: [Int]()) { result, tp in
+            let (i, flag) = tp
+            if flag {
+                result += [Int](repeating: arr[i], count: arr[i] * 2)
+            } else {
+                result = [Int](result[0 ..< result.count - arr[i]])
+            }
+        }
+}
+```
+
+```swift
+// 세로 읽기
+func solution(_ my_string: String, _ m: Int, _ c: Int) -> String {
+    let arr = Array(my_string)
+    var ans = ""
+    var index = c - 1
+    var count = 0
+    while arr.indices ~= index {
+        ans += "\(arr[index])"
+        count += 1
+        index = (count * m) + c - 1
+    }
+    return ans
+}
+```
+
+```swift
+// 날짜 비교하기
+func solution(_ date1: [Int], _ date2: [Int]) -> Int {
+    let closure: (([Int]) -> Int) = { $0.reduce(0) { $0 * 100 + $1 } }
+    return closure(date1) < closure(date2) ? 1 : 0
+}
+```
+
+```swift
 // 배열 만들기 5
 func solution(_ intStrs: [String], _ k: Int, _ s: Int, _ l: Int) -> [Int] {
     intStrs.reduce(into: [Int]()) { result, str in 

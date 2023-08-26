@@ -4,6 +4,48 @@ Uploading programmers study source codes for the first time
 # 기초 트레이닝
 
 ```swift
+// 문자 개수 세기
+extension Character {
+    var index: Int {
+        let ascii = Int(asciiValue!)
+        return (65...90) ~= ascii 
+        ? ascii - 65 
+        : ascii - 97 + 26
+    }
+}
+
+func solution(_ my_string:String) -> [Int] {
+    return my_string.reduce(into: [Int](repeating: 0, count: 52)) { result, char in
+        result[char.index] += 1
+    }
+}
+```
+
+```swift
+// 문자열 묶기
+func solution(_ strArr:[String]) -> Int {
+    return strArr.reduce(into: ([Int: Int](), 0)) { result, str in
+        result.0[str.count, default: 0] += 1
+        result.1 = max(result.0[str.count, default: 0], result.1)
+    }.1
+}
+```
+
+```swift
+// 2의 영역
+import Foundation
+
+func solution(_ arr: [Int]) -> [Int] {
+    if let firstIndex = arr.firstIndex(where: { $0 == 2 }),
+       let lastIndex = arr.lastIndex(where: { $0 == 2 }) {
+         return [Int](arr[firstIndex...lastIndex])
+     } else {
+         return [-1]
+     }
+}
+```
+
+```swift
 // 빈 배열에 추가, 삭제하기
 func solution(_ arr: [Int], _ flag: [Bool]) -> [Int] {
     return flag

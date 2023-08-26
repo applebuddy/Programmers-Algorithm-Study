@@ -4,6 +4,35 @@ Uploading programmers study source codes for the first time
 # 기초 트레이닝
 
 ```swift
+// 두 수의 합
+func solution(_ a: String, _ b: String) -> String {
+    var A = a.map { Int(String($0))! }
+    var B = b.map { Int(String($0))! }
+    let aCnt = A.count
+    let bCnt = B.count
+    let maxCnt = max(aCnt, bCnt)
+    if maxCnt > aCnt {
+        A = [Int](repeating: 0, count: maxCnt - aCnt) + A
+    } else if maxCnt > bCnt {
+        B = [Int](repeating: 0, count: maxCnt - bCnt) + B
+    }
+    
+    var idx = maxCnt - 1
+    var rem = 0
+    var result = [Int](repeating: 0, count: maxCnt)
+    while idx >= 0 {
+        let sum = A[idx] + B[idx] + rem
+        result[idx] = sum % 10
+        rem = sum / 10
+        idx -= 1
+    }
+    
+    let ans = result.map({ "\($0)" }).joined()
+    return rem == 1 ? "1\(ans)" : ans
+}
+```
+
+```swift
 // 문자 개수 세기
 extension Character {
     var index: Int {

@@ -4,6 +4,71 @@ Uploading programmers study source codes for the first time
 # 기초 트레이닝
 
 ```swift
+// 리스트 자르기
+func solution(_ n: Int, _ slicer: [Int], _ num_list: [Int]) -> [Int] {
+    let (a, b, c) = (slicer[0], slicer[1], slicer[2])
+    switch n {
+    case 1:
+        return Array(num_list[0...b])
+    case 2:
+        return Array(num_list[a...])
+    case 3:
+        return [Int](num_list[a...b])
+    default:
+        return stride(from: a, through: b, by: c).map {
+            num_list[$0]
+        }
+    }
+}
+```
+
+```swift
+// 세 개의 구분자
+func solution(_ myStr: String) -> [String] {
+    var temp = ""
+    let len = myStr.count
+    return myStr.enumerated().reduce(into: [String]()) { ans, tp in
+        let (i, char) = tp
+        defer {
+            if i == len - 1 {
+                if !temp.isEmpty {
+                    ans.append(temp)   
+                }
+                if ans.isEmpty {
+                    ans.append("EMPTY")
+                }   
+            }
+        }
+        if ["a", "b", "c"].contains(char) {
+            if temp.isEmpty { return }
+            ans.append(temp)
+            temp = ""
+        } else {
+            temp += "\(char)"
+        }
+    }
+}
+```
+
+```swift
+// 그림 확대
+func solution(_ picture: [String], _ k: Int) -> [String] {
+    let row = picture.count
+    var ans = [[String]](repeating: [String](), count: row * k)
+    picture.enumerated().forEach { i, strings in
+        let r = i * k
+        strings.enumerated().forEach { _, char in
+            let elem = "\(char)"
+            (0..<k).forEach { m in
+                ans[r + m] += [String](repeating: elem, count: k)
+            }
+        }
+    }
+    return ans.map { $0.joined() }
+}
+```
+
+```swift
 // 두 수의 합
 func solution(_ a: String, _ b: String) -> String {
     var A = a.map { Int(String($0))! }

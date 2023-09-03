@@ -4,6 +4,48 @@ Uploading programmers study source codes for the first time
 # 기초 트레이닝
 
 ```swift
+// 커피 심부름
+func solution(_ order: [String]) -> Int {
+    let dic: [String: Int] = [
+        "americano": 4500,
+        "iceamericano": 4500,
+        "americanoice": 4500,
+        "hotamericano": 4500,
+        "americanohot": 4500,
+        "anything": 4500
+    ]
+
+    return order.reduce(0) { $0 + (dic[$1] != nil ? 4500 : 5000) }
+}
+```
+
+```swift
+// 왼쪽 오른쪽
+func solution(_ str_list: [String]) -> [String] {
+    for (i, char) in str_list.enumerated() {
+        if char == "l" {
+            return Array(str_list[..<i])
+        } else if char == "r" {
+            return Array(str_list[(i+1)...])
+        }
+    }
+    return []
+}
+```
+
+```swift
+// qr code
+func solution(_ q: Int, _ r: Int, _ code: String) -> String {
+    return code
+        .enumerated()
+        .filter { index, char in
+            return index % q == r
+        }
+        .reduce("") { "\($0)\($1.element)" }
+}
+```
+
+```swift
 // 리스트 자르기
 func solution(_ n: Int, _ slicer: [Int], _ num_list: [Int]) -> [Int] {
     let (a, b, c) = (slicer[0], slicer[1], slicer[2])

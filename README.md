@@ -4,6 +4,43 @@ Uploading programmers study source codes for the first time
 # 기초 트레이닝
 
 ```swift
+
+// 배열 만들기 4
+func solution(_ arr: [Int]) -> [Int] {
+    var i = 0
+    var stk: [Int] = []
+    while i < arr.count {
+        if stk.isEmpty {
+            stk.append(arr[i])
+            i += 1
+        } else if stk.last! < arr[i] {
+            stk.append(arr[i])
+            i += 1
+        } else {
+            stk.removeLast()
+        }
+    }
+    return stk
+}
+```
+
+```swift
+// 배열 만들기 2
+func solution(_ l: Int, _ r: Int) -> [Int] {
+    let ans = (l...r).reduce(into: [Int]()) { result, num in
+        var n = num
+        while n > 0 {
+            let rem = n % 10
+            if !(rem == 5 || rem == 0) { return }
+            n /= 10
+        }
+        result.append(num)
+    }
+    return ans.isEmpty ? [-1] : ans
+}
+```
+
+```swift
 // 커피 심부름
 func solution(_ order: [String]) -> Int {
     let dic: [String: Int] = [

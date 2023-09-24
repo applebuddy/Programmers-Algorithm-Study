@@ -5,6 +5,50 @@ Uploading programmers study source codes for the first time
 
 ```swift
 
+// 배열의 길이를 2의 거듭제곱으로 만들기
+func solution(_ arr: [Int]) -> [Int] {
+    var num = 1
+    var ans = arr
+    while num < ans.count {
+        num *= 2
+    }
+    return ans + [Int](repeating: 0, count: num - ans.count)
+}
+
+// 문자열 여러 번 뒤집기
+func solution(_ my_string: String, _ queries: [[Int]]) -> String {
+    var arr = Array(my_string).map(String.init)
+    for query in queries {
+        var (l, r) = (query[0], query[1])
+        while l < r {
+            arr.swapAt(l, r)
+            l += 1
+            r -= 1
+        }
+    }
+    return arr.joined()
+}
+
+// 배열 만들기 5
+func solution(_ arr: [Int]) -> [Int] {
+    let ans = arr.reduce(into: (0, [Int]())) { result, com in
+        if result.1.isEmpty {
+            result.1.append(com)
+            result.0 += 1
+            return
+        }
+
+        if result.1.last! == com {
+            result.1.removeLast()
+            result.0 += 1
+        } else {
+            result.1.append(com)
+            result.0 += 1
+        }
+    }
+    return ans.1.isEmpty ? [-1] : ans.1
+}
+
 // 배열 만들기 4
 func solution(_ arr: [Int]) -> [Int] {
     var i = 0

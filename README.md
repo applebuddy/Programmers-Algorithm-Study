@@ -4,6 +4,35 @@ Uploading programmers study source codes for the first time
 # 기초 트레이닝
 
 ```swift
+// 정사각형으로 만들기
+func solution(_ arr: [[Int]]) -> [[Int]] {
+    let row = arr.count
+    let col = arr.max(by: { $0.count > $1.count })!.count
+    let len = max(row, col)
+    return (arr + [[Int]](repeating: [], count: len - row))
+        .map { $0 + [Int](repeating: 0, count: len - $0.count) }
+}
+
+// 조건에 맞게 수열 변환하기 2
+func solution(_ arr: [Int]) -> Int {
+    var ans = -1
+    var prev: [Int] = arr
+    while true {
+        let next: [Int] = prev.map {
+            if $0 >= 50 && $0 % 2 == 0 {
+                return $0 / 2
+            } else if $0 < 50 && $0 % 2 == 1 {
+                return $0 * 2 + 1
+            }
+            return $0
+        }
+        ans += 1
+        if prev == next { break }
+        prev = next
+    }
+
+    return ans
+}
 
 // 배열의 길이를 2의 거듭제곱으로 만들기
 func solution(_ arr: [Int]) -> [Int] {
@@ -313,6 +342,13 @@ func solution(_ intStrs: [String], _ k: Int, _ s: Int, _ l: Int) -> [Int] {
 ```
 
 ```swift
+// 수열과 구간 쿼리 1
+func solution(_ arr: [Int], _ queries: [[Int]]) -> [Int] {
+    return queries.reduce(into: arr) { result, query in
+        (query[0]...query[1]).forEach { result[$0] += 1 }
+    }
+}
+
 // 수열과 구간 쿼리 2
 func solution(_ arr: [Int], _ queries: [[Int]]) -> [Int] {
     queries.reduce(into: [Int]()) { result, q in

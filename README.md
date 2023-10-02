@@ -4,6 +4,66 @@ Uploading programmers study source codes for the first time
 # 기초 트레이닝
 
 ```swift
+// 이차원 배열 대각선 순회하기
+func solution(_ board: [[Int]], _ k: Int) -> Int {
+    return board
+        .enumerated()
+        .reduce(into: 0) { ans, tp in
+            let (i, arr) = tp
+            ans += arr
+                .enumerated()
+                .reduce(0) { sum, ttp in
+                    let (j, elem) = ttp
+                    return sum + (i + j <= k ? elem : 0)
+            }
+        }
+}
+
+// 전국 대회 선발 고사
+func solution(_ rank: [Int], _ attendance: [Bool]) -> Int {
+    var rankDic: [Int: Int] = [:]
+    zip(rank.enumerated(), attendance).forEach { tp in 
+        let (rk, at) = tp
+        if at { rankDic[rk.element] = rk.offset }
+    }
+    print(rankDic)
+    var count = 0
+    var ans = 0
+    for i in 1...rank.count {
+        if rankDic[i] == nil { continue }
+        switch count {
+        case 0:
+            ans += 10000 * rankDic[i]! 
+        case 1:
+            ans += 100 * rankDic[i]!
+        case 2:
+            ans += rankDic[i]!
+        default:
+            break
+        }
+        count += 1
+    }
+    return ans
+}
+
+// 무작위로 K개의 수 뽑기
+func solution(_ arr: [Int], _ k: Int) -> [Int] {
+    var intSet: Set<Int> = []
+    return arr
+        .enumerated()
+        .reduce(into: [Int]()) { result, tuple in
+        let (i, elem) = tuple
+        if result.count < k, !intSet.contains(elem) {
+            intSet.insert(elem)
+            result.append(elem)
+        }
+                                
+        if i == arr.count - 1, result.count < k {
+            result += [Int](repeating: -1, count: k - result.count)
+        }
+    }
+}
+
 // 정사각형으로 만들기
 func solution(_ arr: [[Int]]) -> [[Int]] {
     let row = arr.count

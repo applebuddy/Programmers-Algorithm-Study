@@ -4,6 +4,16 @@ Uploading programmers study source codes for the first time
 # 기초 트레이닝
 
 ```swift
+// 배열 조각하기
+func solution(_ arr: [Int], _ query: [Int]) -> [Int] {
+    return query
+        .enumerated()
+        .reduce(into: arr) { result, tuple in 
+            let (i, q) = tuple
+            result = i % 2 == 0 ? Array(result[...q]) : Array(result[q...])
+    }
+}
+
 // 이차원 배열 대각선 순회하기
 func solution(_ board: [[Int]], _ k: Int) -> Int {
     return board

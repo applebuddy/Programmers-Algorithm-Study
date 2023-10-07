@@ -4,6 +4,35 @@ Uploading programmers study source codes for the first time
 # 기초 트레이닝
 
 ```swift
+// 정수를 나선형으로 배치하기
+func solution(_ n: Int) -> [[Int]] {
+    var arr: [[Int]] = .init(repeating: [Int](repeating: 0, count: n), count: n)
+    var (i, j, num) = (0, 0, 1)
+    let px = [0, 1, 0, -1]
+    let py = [1, 0, -1, 0]
+    var pos = 0
+    
+    while num <= (n * n) {
+        arr[i][j] = num
+        
+        while true {
+            if num >= (n * n) { break }
+            let nx = i + px[pos]
+            let ny = j + py[pos]
+            if arr.indices ~= nx && arr.indices ~= ny && arr[nx][ny] == 0 {
+                (i, j) = (nx, ny)
+                break
+            } else {
+                pos = (pos + 1) % 4
+            }
+        }
+        num += 1
+    }
+    return arr
+}
+```
+
+```swift
 // 배열 조각하기
 func solution(_ arr: [Int], _ query: [Int]) -> [Int] {
     return query

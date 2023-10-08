@@ -707,6 +707,34 @@ func solution(_ a: Int, _ b: Int, _ c: Int) -> Int {
     default: return a + b + c
     }
 }
+
+// 주사위 게임 3
+func solution(_ a: Int, _ b: Int, _ c: Int, _ d: Int) -> Int {
+    let dic: [Int: Int] = [a, b, c, d].reduce(into: [Int: Int]()) { result, elem in 
+        result[elem, default: 0] += 1
+    }
+
+    let arr = dic.sorted(by: { $0.value < $1.value })
+    
+    switch dic.count {
+    case 1:
+        return 1111 * a
+    case 2:
+        switch arr.first!.value {
+        case 1:
+            let value = 10 * arr.last!.key + arr.first!.key
+            return value * value
+        default:
+            let (p, q) = (arr.first!.key, arr.last!.key)
+            return (p + q) * (p - q >= 0 ? p - q : (p - q) * -1)
+        }
+    default:
+        if arr.first!.value == 1 && arr.last!.value == 2 {
+            return arr[0].key * arr[1].key
+        }
+    }
+    return dic.map(\.key).min()!
+}
 ~~~
 
 ~~~swift

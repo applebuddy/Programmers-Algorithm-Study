@@ -2535,6 +2535,25 @@ func solution(_ arrayA:[Int], _ arrayB:[Int]) -> Int {
 
 # Level 2
 
+```swift
+// 테이블 해시 함수
+func solution(_ data: [[Int]], _ col: Int, _ row_begin: Int, _ row_end: Int) -> Int {
+    data
+        .sorted {
+            $0[col-1] < $1[col-1]
+            || ($0[col-1] == $1[col-1] && $0[0] > $1[0])
+        }
+        .enumerated()
+        .map { i, elem in
+            elem.reduce(0) { $0 + ($1 % (i + 1)) }
+        }[(row_begin-1)...(row_end-1)]
+        .reduce(into: -1) {
+            if $0 == -1 { $0 = $1 } 
+            else { $0 ^= $1 }
+        }
+}
+```
+
 ### 연속된 부분 수열의 합
 
 - problem link : https://school.programmers.co.kr/learn/courses/30/lessons/178870

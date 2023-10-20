@@ -2554,6 +2554,32 @@ func solution(_ data: [[Int]], _ col: Int, _ row_begin: Int, _ row_end: Int) -> 
 }
 ```
 
+```swift
+// 마법의 엘리베이터
+var ans = Int.max
+
+func dfs(_ num: Int, _ count: Int) {
+    if ans <= count { return }
+    if num == 0 {
+        ans = ans > count ? count : ans
+        return
+    }
+    
+    let rem = num % 10
+    if rem == 0 {
+        dfs(num / 10, count)
+    } else {
+        dfs(num - rem, count + rem)
+        dfs(num + 10 - rem, count + (10 - rem))
+    }
+}
+
+func solution(_ storey: Int) -> Int {
+    dfs(storey, 0)
+    return ans
+}
+```
+
 ### 연속된 부분 수열의 합
 
 - problem link : https://school.programmers.co.kr/learn/courses/30/lessons/178870

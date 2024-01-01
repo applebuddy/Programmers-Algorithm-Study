@@ -2536,6 +2536,19 @@ func solution(_ arrayA:[Int], _ arrayB:[Int]) -> Int {
 # Level 2
 
 ```swift
+// 두 원 사이의 정수 쌍
+import Foundation
+
+func solution(_ r1: Int, _ r2: Int) -> Int64 {
+    return (1...r2).reduce(into: 0) { result, x in
+        let y1Value = ceil(sqrt(Double(r1 * r1 - x * x)))
+        let y2Value = floor(sqrt(Double(r2 * r2 - x * x)))
+        result += x <= r1 ? Int64(y2Value - y1Value + 1) : Int64(y2Value + 1)
+    } * 4
+}
+```
+
+```swift
 // 테이블 해시 함수
 func solution(_ data: [[Int]], _ col: Int, _ row_begin: Int, _ row_end: Int) -> Int {
     data

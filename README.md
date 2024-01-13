@@ -1839,6 +1839,68 @@ func solution(_ balls: Int, _ share: Int) -> Int {
 
 # Level 1
 
+### 가장 많이 받은 선물 (K)
+
+```swift
+struct Friend {
+    var sendDic: [String: Int] = [:]
+    var score: Int
+    
+    init() {
+        score = 0
+    }
+}
+
+func solution(_ friends: [String], _ gifts: [String]) -> Int {
+    var friendDic: [String: Friend] = friends.reduce(into: [:]) { result, friend in
+        result[friend] = Friend()
+    }
+    var countDic: [String: Int] = [:]
+    var ans = 0
+    gifts.forEach { gift in
+        let arr = gift.split(separator: " ").map(String.init)
+        let (from, to) = (arr[0], arr[1])
+        guard var friend = friendDic[from], var friend2 = friendDic[to]
+        else { return }
+        friend.score -= 1
+        friend2.score += 1
+        friend2.sendDic[from, default: 0] += 1
+        friendDic[from] = friend
+        friendDic[to] = friend2
+    }
+    
+    for i in friends.indices {
+        for j in (i + 1)..<friends.count {
+            let first = friends[i]
+            let second = friends[j]
+            let friend = friendDic[first]!
+            let friend2 = friendDic[second]!
+            let firstSendCount = friend.sendDic[second, default: 0]
+            let secondSendCount = friend2.sendDic[first, default: 0]
+
+            if firstSendCount > secondSendCount {
+                countDic[second, default: 0] += 1
+            } else if firstSendCount < secondSendCount {
+                countDic[first, default: 0] += 1
+            } else {
+                if friend.score > friend2.score {
+                    countDic[second, default: 0] += 1
+                } else if friend.score < friend2.score {
+                    countDic[first, default: 0] += 1
+                }
+            }
+
+            let firstCount = countDic[first, default: 0]
+            let secondCount = countDic[second, default: 0]
+            ans = ans < firstCount ? firstCount : ans
+            ans = ans < secondCount ? secondCount : ans
+        }
+    }
+
+    return ans
+}
+```
+
 ### 개인정보 수집 유효기간 (K)
 
 - problem link : https://school.programmers.co.kr/learn/courses/30/lessons/150370
